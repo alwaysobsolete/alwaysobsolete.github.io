@@ -20,6 +20,7 @@
 	"devDependencies": {
 		"@eslint/compat": "^1.4.0",
 		"@eslint/eslintrc": "^3",
+		"@mdx-js/mdx": "^3.0.0",
 		"@svgr/webpack": "^8.1.0",
 		"@types/node": "^20",
 		"@types/react": "^19",

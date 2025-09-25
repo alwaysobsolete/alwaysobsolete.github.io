@@ -1,0 +1,95 @@
+import path from "path";
+
+import getSubdirs from "@/lib/fs/getSubdirs";
+import evalMetadata from "@/lib/mdx/evalMetadata";
+import Chapter from "@/models/Book/Chapter";
+
+interface PartMetadata {
+	title: string;
+}
+
+class Part {
+	// Properties
+	public bookSlug: string;
+	public chapters: Chapter[];
+	public slug: string;
+	public title: string;
+
+	/**
+	 * Private Constructor
+	 *
+	 * Use Part.init() factory instead
+	 */
+	private constructor(part: ClassProps<Part>) {
+		this.bookSlug = part.bookSlug;
+		this.chapters = part.chapters;
+		this.slug = part.slug;
+		this.title = part.title;
+	}
+
+	/**
+	 * Part Factory
+	 *
+	 * @returns {Part}
+	 */
+	public static async init(partPath: string, bookSlug: string): Promise<Part> {
+		/*
+		 * Parse data dir
+		 */
+		const mdxPath = path.join(partPath, "part.mdx");
+		const { title } = await evalMetadata<PartMetadata>(mdxPath);
+
+		// Metadata assertions
+		if (!title) {
+			throw new Error(`${mdxPath} has no .title metadata`);
+		}
+
+		/*
+		 * Make Part
+		 */
+		const slug = path.basename(partPath);
+
+		const chapterPaths = await getSubdirs(path.join(partPath, "chapters"));
+
+		const chapters = await Promise.all(
+			chapterPaths.map((chapterPath) => Chapter.init(chapterPath, slug)),
+		);
+
+		return new Part({
+			bookSlug,
+			chapters,
+			title,
+			slug,
+		});
+	}
+
+	/**
+	 * Get Chapter or Throw
+	 */
+	public getChapterOrThrow(chapterSlug: string) {
+		const chapter = this.chapters.find(
+			(chapter) => chapter.slug === chapterSlug,
+		);
+
+		if (!chapter) {
+			throw new Error(`Could not find chapter with slug ${chapterSlug}`);
+		}
+
+		return chapter;
+	}
+
+	/**
+	 * Get Chapter Siblings
+	 */
+	public getChapterSiblings(chapterSlug: string) {
+		const idx = this.chapters.indexOf(this.getChapterOrThrow(chapterSlug));
+
+		return {
+			next: this.chapters[idx + 1],
+			prev: this.chapters[idx - 1],
+		};
+	}
+}
+
+export default Part;
+export type { PartMetadata };

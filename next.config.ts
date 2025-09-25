@@ -1,7 +1,12 @@
 import type { NextConfig } from "next";
+import path from "path";
 import createMDX from "@next/mdx";
 
 const nextConfig: NextConfig = {
+	experimental: {
+		optimizePackageImports: ["@mantine/core", "@mantine/hooks"],
+	},
+
 	pageExtensions: ["js", "jsx", "md", "mdx", "ts", "tsx"],
 
 	/*
@@ -9,6 +14,7 @@ const nextConfig: NextConfig = {
 	 */
 	sassOptions: {
 		implementation: "sass-embedded",
+		additionalData: `@use "${path.join(process.cwd(), "_mantine").replace(/\\/g, "/")}" as mantine;`,
 	},
 
 	/*

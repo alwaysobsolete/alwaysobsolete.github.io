@@ -7,7 +7,7 @@ import {
 } from "@mantine/core";
 import "@mantine/core/styles.css";
 
-import "./globals.css";
+import "./globals.scss";
 
 // @todo
 const metadata: Metadata = {

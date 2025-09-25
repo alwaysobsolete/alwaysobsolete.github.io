@@ -30,6 +30,11 @@ body {
 	margin: 0;
 }
 
+ol.no-style, ul.no-style {
+	list-style-type: none;
+	padding-left: var(--mantine-spacing-md);
+}
+
 @media (prefers-color-scheme: dark) {
 	html {
 		color-scheme: dark;

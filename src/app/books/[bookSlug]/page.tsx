@@ -40,6 +40,13 @@ const BookPage: FC<PageProps<"/books/[bookSlug]">> = async ({ params }) => {
 		metadata: { title },
 	} = await import(`@/content/books/${bookSlug}/book.mdx`);
 
+	let Appendix;
+
+	try {
+		Appendix = (await import(`@/content/books/${bookSlug}/appendix.mdx`))
+			.default;
+	} catch {}
+
 	// Get Book object
 	const book = getBookOrThrow({ slug: bookSlug });
 
@@ -55,6 +62,8 @@ const BookPage: FC<PageProps<"/books/[bookSlug]">> = async ({ params }) => {
 				<Markdown />
 
 				<BookTOC book={book} />
+
+				{Appendix && <Appendix />}
 			</article>
 		</div>
 	);

@@ -1,6 +1,7 @@
 import type { ParamMap } from ".next/types/routes";
 import type { FC } from "react";
 
+import Breadcrumbs from "@/components/nav/Breadcrumbs/Breadcrumbs";
 import books from "@/content/books";
 import getBookOrThrow from "@/lib/data/Book/getBookOrThrow";
 
@@ -68,23 +69,45 @@ const BookArticlePage: FC<
 		chapter.getArticleSiblings(articleSlug);
 
 	/*
+	 * Constants
+	 */
+	const crumbs = [
+		{
+			title: book.title,
+			href: `/books/${bookSlug}`,
+		},
+		{
+			title: part.title,
+			href: `/books/${bookSlug}/${partSlug}`,
+		},
+		{
+			title: chapter.title,
+			href: `/books/${bookSlug}/${partSlug}/${chapterSlug}`,
+		},
+	];
+
+	/*
 	 * React component
 	 */
 	return (
 		<div className={styles.wrapper}>
-			<h1>{title}</h1>
+			<Breadcrumbs crumbs={crumbs} />
 
-			<Markdown />
+			<article>
+				<h1>{title}</h1>
 
-			<p>
-				{nextPart?.title} {prevPart?.title}
-			</p>
-			<p>
-				{nextChapter?.title} {prevChapter?.title}
-			</p>
-			<p>
-				{nextArticle?.title} {prevArticle?.title}
-			</p>
+				<Markdown />
+
+				<p>
+					{nextPart?.title} {prevPart?.title}
+				</p>
+				<p>
+					{nextChapter?.title} {prevChapter?.title}
+				</p>
+				<p>
+					{nextArticle?.title} {prevArticle?.title}
+				</p>
+			</article>
 		</div>
 	);
 };

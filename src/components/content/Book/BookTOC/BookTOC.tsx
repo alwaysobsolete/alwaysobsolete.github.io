@@ -14,7 +14,7 @@ const BookTOC: FC<{ book: Book }> = ({ book }) => {
 		<div>
 			<h2>Table of Contents</h2>
 
-			<ol className="no-style">
+			<ol style={{ listStyleType: "upper-roman" }}>
 				{book.parts.map((part) => (
 					<li key={part.slug}>
 						<PartTOC baseURL={`/books/${book.slug}`} part={part} />

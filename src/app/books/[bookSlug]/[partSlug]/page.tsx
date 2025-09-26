@@ -7,6 +7,7 @@ import books from "@/content/books";
 import getBookOrThrow from "@/lib/data/Book/getBookOrThrow";
 
 import styles from "./styles.module.scss";
+import BookPartNav from "@/components/content/Book/Part/PartNav/PartNav";
 
 /*
  * SSR
@@ -78,6 +79,8 @@ const BookPartPage: FC<PageProps<"/books/[bookSlug]/[partSlug]">> = async ({
 
 				<PartTOC baseURL={`/books/${bookSlug}`} part={part} showTitle={false} />
 			</article>
+
+			<BookPartNav book={book} partSlug={partSlug} />
 		</div>
 	);
 };

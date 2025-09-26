@@ -22,6 +22,7 @@
 	"devDependencies": {
 		"@eslint/compat": "^1.4.0",
 		"@eslint/eslintrc": "^3",
+		"@material-symbols/svg-400": "^0.36.0",
 		"@mdx-js/mdx": "^3.0.0",
 		"@svgr/webpack": "^8.1.0",
 		"@types/node": "^20",

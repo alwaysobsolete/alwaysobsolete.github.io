@@ -1,6 +1,8 @@
 import type { NextConfig } from "next";
-import path from "path";
 import createMDX from "@next/mdx";
+import path from "path";
+import rehypeAutolinkHeadings from "rehype-autolink-headings";
+import rehypeSlug from "rehype-slug";
 
 const nextConfig: NextConfig = {
 	experimental: {
@@ -62,6 +64,21 @@ const nextConfig: NextConfig = {
  */
 const withMDX = createMDX({
 	// Add markdown plugins here, as desired
+	options: {
+		remarkPlugins: [],
+		rehypePlugins: [
+			rehypeSlug,
+			[
+				rehypeAutolinkHeadings,
+				{
+					behavior: "wrap",
+					properties: {
+						className: "anchor-heading",
+					},
+				},
+			],
+		],
+	},
 });
 
 // Merge MDX config with Next.js config

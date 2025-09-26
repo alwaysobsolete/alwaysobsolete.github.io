@@ -42,7 +42,7 @@ class Part {
 		/*
 		 * Parse data dir
 		 */
-		const mdxPath = path.join(partPath, "part.mdx");
+		const mdxPath = path.join(partPath, "index.mdx");
 		const { title } = await evalMetadata<PartMetadata>(mdxPath);
 
 		// Metadata assertions

@@ -33,7 +33,7 @@ export async function generateMetadata({
 	const {
 		metadata: { title },
 	} = await import(
-		`@/content/books/${bookSlug}/parts/${partSlug}/chapters/${chapterSlug}/chapter.mdx`
+		`@/content/books/${bookSlug}/parts/${partSlug}/chapters/${chapterSlug}/index.mdx`
 	);
 
 	const book = getBookOrThrow({ slug: bookSlug });
@@ -83,7 +83,7 @@ const BookChapterPage: FC<
 		default: Markdown,
 		metadata: { title },
 	} = await import(
-		`@/content/books/${bookSlug}/parts/${partSlug}/chapters/${chapterSlug}/chapter.mdx`
+		`@/content/books/${bookSlug}/parts/${partSlug}/chapters/${chapterSlug}/index.mdx`
 	);
 
 	// Get Book objects

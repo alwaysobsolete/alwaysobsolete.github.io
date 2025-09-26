@@ -28,7 +28,7 @@ export async function generateMetadata({
 	 */
 	const {
 		metadata: { title },
-	} = await import(`@/content/books/${bookSlug}/book.mdx`);
+	} = await import(`@/content/books/${bookSlug}/index.mdx`);
 
 	/*
 	 * Make metadata
@@ -64,7 +64,7 @@ const BookPage: FC<PageProps<"/books/[bookSlug]">> = async ({ params }) => {
 	const {
 		default: Markdown,
 		metadata: { title },
-	} = await import(`@/content/books/${bookSlug}/book.mdx`);
+	} = await import(`@/content/books/${bookSlug}/index.mdx`);
 
 	let Appendix;
 

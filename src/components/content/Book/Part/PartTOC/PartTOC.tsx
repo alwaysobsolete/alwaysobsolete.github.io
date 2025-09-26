@@ -22,7 +22,7 @@ const PartTOC: FC<{ baseURL: string; part: Part; showTitle?: boolean }> = ({
 					<Link href={`${baseURL}/${part.slug}`}>{part.title}</Link>
 				</h2>
 			)}
-			<ol className="no-style">
+			<ol style={{ listStyleType: "lower-roman" }}>
 				{part.chapters.map((chapter) => (
 					<li key={chapter.slug}>
 						<ChapterTOC baseURL={`${baseURL}/${part.slug}`} chapter={chapter} />

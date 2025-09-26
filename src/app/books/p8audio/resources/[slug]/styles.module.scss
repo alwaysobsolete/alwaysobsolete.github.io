@@ -1,0 +1,8 @@
+.wrapper {
+	margin-top: var(--mantine-spacing-md);
+	padding: var(--mantine-spacing-md);
+
+	:global .markdown-body {
+		background: none;
+	}
+}

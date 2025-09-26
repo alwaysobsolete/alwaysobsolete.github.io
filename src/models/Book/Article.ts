@@ -13,6 +13,7 @@ class Article {
 	public chapterSlug: string;
 	public slug: string;
 	public title: string;
+	public url: string;
 
 	/**
 	 * Private Constructor
@@ -24,6 +25,7 @@ class Article {
 		this.chapterSlug = article.chapterSlug;
 		this.slug = article.slug;
 		this.title = article.title;
+		this.url = article.url;
 	}
 
 	/**
@@ -34,6 +36,7 @@ class Article {
 	public static async init(
 		articlePath: string,
 		chapterSlug: string,
+		chapterUrl: string,
 	): Promise<Article> {
 		/*
 		 * Parse data dir
@@ -53,12 +56,14 @@ class Article {
 		 * Make Article
 		 */
 		const slug = path.basename(articlePath, path.extname(articlePath));
+		const url = `${chapterUrl}/${slug}`;
 
 		return new Article({
 			author,
 			chapterSlug,
 			slug,
 			title,
+			url,
 		});
 	}
 }

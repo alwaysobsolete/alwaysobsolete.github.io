@@ -14,6 +14,7 @@ class Part {
 	public chapters: Chapter[];
 	public slug: string;
 	public title: string;
+	public url: string;
 
 	/**
 	 * Private Constructor
@@ -25,6 +26,7 @@ class Part {
 		this.chapters = part.chapters;
 		this.slug = part.slug;
 		this.title = part.title;
+		this.url = part.url;
 	}
 
 	/**
@@ -32,7 +34,11 @@ class Part {
 	 *
 	 * @returns {Part}
 	 */
-	public static async init(partPath: string, bookSlug: string): Promise<Part> {
+	public static async init(
+		partPath: string,
+		bookSlug: string,
+		bookUrl: string,
+	): Promise<Part> {
 		/*
 		 * Parse data dir
 		 */
@@ -48,18 +54,20 @@ class Part {
 		 * Make Part
 		 */
 		const slug = path.basename(partPath);
+		const url = `${bookUrl}/${slug}`;
 
 		const chapterPaths = await getSubdirs(path.join(partPath, "chapters"));
 
 		const chapters = await Promise.all(
-			chapterPaths.map((chapterPath) => Chapter.init(chapterPath, slug)),
+			chapterPaths.map((chapterPath) => Chapter.init(chapterPath, slug, url)),
 		);
 
 		return new Part({
 			bookSlug,
 			chapters,
-			title,
 			slug,
+			title,
+			url,
 		});
 	}
 

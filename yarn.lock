@@ -1229,6 +1229,11 @@
   resolved "https://registry.yarnpkg.com/@mantine/hooks/-/hooks-8.3.2.tgz#535d93f7818f4f289e227fb46a6ed85b1f251c9e"
   integrity sha512-urDgQJNAs2t2mAyGaA+7uNsBMRn9U/ccvi+ZUl5ef3/Wzfv5KYHe9LA9DBNhn24BTSewxrI27W0EFpFxv/Jsbg==
 
+"@material-symbols/svg-400@^0.36.0":
+  version "0.36.0"
+  resolved "https://registry.yarnpkg.com/@material-symbols/svg-400/-/svg-400-0.36.0.tgz#182433a0a9f139ba0756a41fe9d2488b286e0ffb"
+  integrity sha512-X4DYpf5LQyrK0MbtLeFuMMO6oRCE8iMi32A3XO49vz5IpEXjPzFOdWuqUb7E92SYS6tmMgeGS+EZUcQdGLNacw==
+
 "@mdx-js/loader@^3.1.1":
   version "3.1.1"
   resolved "https://registry.yarnpkg.com/@mdx-js/loader/-/loader-3.1.1.tgz#77bdab9c71d965b33cfbdaa80c69911f06c1524a"

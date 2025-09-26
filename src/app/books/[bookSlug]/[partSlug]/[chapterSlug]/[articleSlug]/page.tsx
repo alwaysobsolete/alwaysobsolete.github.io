@@ -1,4 +1,5 @@
 import type { ParamMap } from ".next/types/routes";
+import type { Metadata } from "next";
 import type { FC } from "react";
 
 import ArticleNav from "@/components/content/Book/Article/ArticleNav/ArticleNav";
@@ -16,6 +17,33 @@ type StaticParams =
 	ParamMap["/books/[bookSlug]/[partSlug]/[chapterSlug]/[articleSlug]"][];
 
 export const dynamicParams = false;
+
+export async function generateMetadata({
+	params,
+}: PageProps<"/books/[bookSlug]/[partSlug]/[chapterSlug]/[articleSlug]">): Promise<Metadata> {
+	/*
+	 * Context
+	 */
+	const { articleSlug, bookSlug, chapterSlug, partSlug } = await params;
+
+	/*
+	 * Data
+	 */
+	const {
+		metadata: { title },
+	} = await import(
+		`@/content/books/${bookSlug}/parts/${partSlug}/chapters/${chapterSlug}/articles/${articleSlug}.mdx`
+	);
+
+	const book = getBookOrThrow({ slug: bookSlug });
+
+	/*
+	 * Make metadata
+	 */
+	return {
+		title: `${book.title}: ${title}`,
+	};
+}
 
 export async function generateStaticParams(): Promise<StaticParams> {
 	const staticParams: StaticParams = [];

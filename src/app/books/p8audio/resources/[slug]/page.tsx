@@ -15,20 +15,6 @@ import styles from "./styles.module.scss";
  */
 export const dynamicParams = false;
 
-export async function generateStaticParams(): Promise<
-	ParamMap["/books/p8audio/resources/[slug]"][]
-> {
-	const files = await fsPromises.readdir(
-		"./src/content/books/p8audio/resources",
-	);
-
-	const staticParams = files
-		.filter((file) => path.extname(file) === ".mdx")
-		.map((file) => ({ slug: path.basename(file, path.extname(file)) }));
-
-	return staticParams;
-}
-
 export async function generateMetadata({
 	params,
 }: PageProps<"/books/p8audio/resources/[slug]">): Promise<Metadata> {
@@ -52,6 +38,20 @@ export async function generateMetadata({
 	return {
 		title: `${book.title}: ${title}`,
 	};
+}
+
+export async function generateStaticParams(): Promise<
+	ParamMap["/books/p8audio/resources/[slug]"][]
+> {
+	const files = await fsPromises.readdir(
+		"./src/content/books/p8audio/resources",
+	);
+
+	const staticParams = files
+		.filter((file) => path.extname(file) === ".mdx")
+		.map((file) => ({ slug: path.basename(file, path.extname(file)) }));
+
+	return staticParams;
 }
 
 /**

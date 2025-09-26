@@ -1,4 +1,5 @@
 import type { ParamMap } from ".next/types/routes";
+import type { Metadata } from "next";
 import type { FC } from "react";
 
 import BookTOC from "@/components/content/Book/BookTOC/BookTOC";
@@ -12,6 +13,29 @@ import styles from "./styles.module.scss";
  * SSR
  */
 export const dynamicParams = false;
+
+export async function generateMetadata({
+	params,
+}: PageProps<"/books/[bookSlug]">): Promise<Metadata> {
+	/*
+	 * Context
+	 */
+	const { bookSlug } = await params;
+
+	/*
+	 * Data
+	 */
+	const {
+		metadata: { title },
+	} = await import(`@/content/books/${bookSlug}/book.mdx`);
+
+	/*
+	 * Make metadata
+	 */
+	return {
+		title: `${title}`,
+	};
+}
 
 export async function generateStaticParams(): Promise<
 	ParamMap["/books/[bookSlug]"][]

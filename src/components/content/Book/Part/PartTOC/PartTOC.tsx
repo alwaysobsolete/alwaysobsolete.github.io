@@ -13,19 +13,29 @@ const PartTOC: FC<{ baseURL: string; part: Part; showTitle?: boolean }> = ({
 	showTitle = true,
 }) => {
 	/*
+	 * Constants
+	 */
+	const partUrl = `${baseURL}/${part.slug}`;
+
+	/*
 	 * React element
 	 */
 	return (
 		<div>
 			{showTitle && (
 				<h2>
-					<Link href={`${baseURL}/${part.slug}`}>{part.title}</Link>
+					{part.chapters.filter((chapter) => chapter.articles.length > 0)
+						.length > 0 ? (
+						<Link href={partUrl}>{part.title}</Link>
+					) : (
+						part.title
+					)}
 				</h2>
 			)}
 			<ol style={{ listStyleType: "lower-roman" }}>
 				{part.chapters.map((chapter) => (
 					<li key={chapter.slug}>
-						<ChapterTOC baseURL={`${baseURL}/${part.slug}`} chapter={chapter} />
+						<ChapterTOC baseURL={partUrl} chapter={chapter} />
 					</li>
 				))}
 			</ol>

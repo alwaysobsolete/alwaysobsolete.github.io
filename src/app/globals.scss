@@ -30,9 +30,21 @@ body {
 	margin: 0;
 }
 
+button {
+	svg {
+		fill: currentColor;
+	}
+}
+
 ol.no-style, ul.no-style {
 	list-style-type: none;
 	padding-left: var(--mantine-spacing-md);
+}
+
+.flex {
+	display: flex;
+	flex-wrap: wrap;
+	gap: var(--mantine-spacing-md);
 }
 
 @media (prefers-color-scheme: dark) {

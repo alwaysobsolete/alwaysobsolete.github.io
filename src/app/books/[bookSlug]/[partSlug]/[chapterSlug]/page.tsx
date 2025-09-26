@@ -7,6 +7,7 @@ import Breadcrumbs from "@/components/nav/Breadcrumbs/Breadcrumbs";
 import books from "@/content/books";
 import getBookOrThrow from "@/lib/data/Book/getBookOrThrow";
 
+import "github-markdown-css/github-markdown-dark.css";
 import styles from "./styles.module.scss";
 
 /*
@@ -85,7 +86,7 @@ const BookChapterPage: FC<
 		<div className={styles.wrapper}>
 			<Breadcrumbs crumbs={crumbs} />
 
-			<article>
+			<article className="markdown-body">
 				<h1>{title}</h1>
 
 				<Markdown />

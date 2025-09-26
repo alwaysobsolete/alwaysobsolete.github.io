@@ -5,6 +5,7 @@ import BookTOC from "@/components/content/Book/BookTOC/BookTOC";
 import books from "@/content/books";
 import getBookOrThrow from "@/lib/data/Book/getBookOrThrow";
 
+import "github-markdown-css/github-markdown-dark.css";
 import styles from "./styles.module.scss";
 
 /*
@@ -55,7 +56,7 @@ const BookPage: FC<PageProps<"/books/[bookSlug]">> = async ({ params }) => {
 	 */
 	return (
 		<div className={styles.wrapper}>
-			<article>
+			<article className="markdown-body">
 				<h1>{title}</h1>
 				<p>By: {book.authors.join(", ")}</p>
 

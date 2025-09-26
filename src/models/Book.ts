@@ -14,6 +14,7 @@ class Book {
 	public parts: Part[];
 	public slug: string;
 	public title: string;
+	public url: string;
 
 	/**
 	 * Private Constructor
@@ -39,6 +40,7 @@ class Book {
 		this.parts = book.parts;
 		this.slug = book.slug;
 		this.title = book.title;
+		this.url = book.url;
 	}
 
 	/**
@@ -62,14 +64,15 @@ class Book {
 		 * Make Book
 		 */
 		const slug = path.basename(bookPath);
+		const url = `/books/${slug}`;
 
 		const partPaths = await getSubdirs(path.join(bookPath, "parts"));
 
 		const parts = await Promise.all(
-			partPaths.map((partPath) => Part.init(partPath, slug)),
+			partPaths.map((partPath) => Part.init(partPath, slug, url)),
 		);
 
-		return new Book({ parts, slug, title });
+		return new Book({ parts, slug, title, url });
 	}
 
 	/**

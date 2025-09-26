@@ -1,6 +1,7 @@
 import type { NextConfig } from "next";
 import createMDX from "@next/mdx";
 import path from "path";
+import remarkGfm from "remark-gfm";
 import rehypeAutolinkHeadings from "rehype-autolink-headings";
 import rehypeSlug from "rehype-slug";
 
@@ -65,7 +66,7 @@ const nextConfig: NextConfig = {
 const withMDX = createMDX({
 	// Add markdown plugins here, as desired
 	options: {
-		remarkPlugins: [],
+		remarkPlugins: [remarkGfm],
 		rehypePlugins: [
 			rehypeSlug,
 			[

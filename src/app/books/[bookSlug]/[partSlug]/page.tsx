@@ -1,13 +1,14 @@
 import type { ParamMap } from ".next/types/routes";
 import type { FC } from "react";
 
-import Breadcrumbs from "@/components/nav/Breadcrumbs/Breadcrumbs";
+import BookPartNav from "@/components/content/Book/Part/PartNav/PartNav";
 import PartTOC from "@/components/content/Book/Part/PartTOC/PartTOC";
+import Breadcrumbs from "@/components/nav/Breadcrumbs/Breadcrumbs";
 import books from "@/content/books";
 import getBookOrThrow from "@/lib/data/Book/getBookOrThrow";
 
+import "github-markdown-css/github-markdown-dark.css";
 import styles from "./styles.module.scss";
-import BookPartNav from "@/components/content/Book/Part/PartNav/PartNav";
 
 /*
  * SSR
@@ -72,7 +73,7 @@ const BookPartPage: FC<PageProps<"/books/[bookSlug]/[partSlug]">> = async ({
 		<div className={styles.wrapper}>
 			<Breadcrumbs crumbs={crumbs} />
 
-			<article>
+			<article className="markdown-body">
 				<h1>{title}</h1>
 
 				<Markdown />

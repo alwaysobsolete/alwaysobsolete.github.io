@@ -1,6 +1,7 @@
 import type { ParamMap } from ".next/types/routes";
 import type { FC } from "react";
 
+import ArticleNav from "@/components/content/Book/Article/ArticleNav/ArticleNav";
 import Breadcrumbs from "@/components/nav/Breadcrumbs/Breadcrumbs";
 import books from "@/content/books";
 import getBookOrThrow from "@/lib/data/Book/getBookOrThrow";
@@ -62,27 +63,26 @@ const BookArticlePage: FC<
 	const book = getBookOrThrow({ slug: bookSlug });
 	const part = book.getPartOrThrow(partSlug);
 	const chapter = part.getChapterOrThrow(chapterSlug);
-	const { next: nextPart, prev: prevPart } = book.getPartSiblings(partSlug);
-	const { next: nextChapter, prev: prevChapter } =
-		part.getChapterSiblings(chapterSlug);
-	const { next: nextArticle, prev: prevArticle } =
-		chapter.getArticleSiblings(articleSlug);
 
 	/*
 	 * Constants
 	 */
+	const bookURL = `/books/${bookSlug}`;
+	const partURL = `${bookURL}/${partSlug}`;
+	const chapterURL = `${partURL}/${chapterSlug}`;
+
 	const crumbs = [
 		{
 			title: book.title,
-			href: `/books/${bookSlug}`,
+			href: bookURL,
 		},
 		{
 			title: part.title,
-			href: `/books/${bookSlug}/${partSlug}`,
+			href: partURL,
 		},
 		{
 			title: chapter.title,
-			href: `/books/${bookSlug}/${partSlug}/${chapterSlug}`,
+			href: chapterURL,
 		},
 	];
 
@@ -97,17 +97,14 @@ const BookArticlePage: FC<
 				<h1>{title}</h1>
 
 				<Markdown />
-
-				<p>
-					{nextPart?.title} {prevPart?.title}
-				</p>
-				<p>
-					{nextChapter?.title} {prevChapter?.title}
-				</p>
-				<p>
-					{nextArticle?.title} {prevArticle?.title}
-				</p>
 			</article>
+
+			<ArticleNav
+				articleSlug={articleSlug}
+				book={book}
+				chapter={chapter}
+				part={part}
+			/>
 		</div>
 	);
 };

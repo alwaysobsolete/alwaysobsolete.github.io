@@ -14,21 +14,28 @@ const ChapterTOC: FC<{
 	showTitle?: boolean;
 }> = ({ baseURL, chapter, showTitle = true }) => {
 	/*
+	 * Constants
+	 */
+	const chapterUrl = `${baseURL}/${chapter.slug}`;
+
+	/*
 	 * React element
 	 */
 	return (
 		<div className={styles.wrapper}>
 			{showTitle && (
 				<h3>
-					<Link href={`${baseURL}/${chapter.slug}`}>{chapter.title}</Link>
+					{chapter.articles.length > 0 ? (
+						<Link href={chapterUrl}>{chapter.title}</Link>
+					) : (
+						chapter.title
+					)}
 				</h3>
 			)}
 			<ol className="no-style">
 				{chapter.articles.map((article) => (
 					<li className={styles.articleItem} key={article.slug}>
-						<Link href={`${baseURL}/${chapter.slug}/${article.slug}`}>
-							{article.title}
-						</Link>
+						<Link href={`${chapterUrl}/${article.slug}`}>{article.title}</Link>
 					</li>
 				))}
 			</ol>

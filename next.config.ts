@@ -10,6 +10,8 @@ const nextConfig: NextConfig = {
 		optimizePackageImports: ["@mantine/core", "@mantine/hooks"],
 	},
 
+	output: "export",
+
 	pageExtensions: ["js", "jsx", "md", "mdx", "ts", "tsx"],
 
 	/*
@@ -19,6 +21,8 @@ const nextConfig: NextConfig = {
 		implementation: "sass-embedded",
 		additionalData: `@use "${path.join(process.cwd(), "_mantine").replace(/\\/g, "/")}" as mantine;`,
 	},
+
+	trailingSlash: true,
 
 	/*
 	 * webpack

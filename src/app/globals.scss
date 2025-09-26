@@ -36,9 +36,12 @@ button {
 	}
 }
 
+ol, ul {
+	padding-left: var(--mantine-spacing-md);
+}
+
 ol.no-style, ul.no-style {
 	list-style-type: none;
-	padding-left: var(--mantine-spacing-md);
 }
 
 .flex {

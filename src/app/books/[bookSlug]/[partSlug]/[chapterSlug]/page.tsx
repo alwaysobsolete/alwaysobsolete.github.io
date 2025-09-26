@@ -2,6 +2,7 @@ import type { ParamMap } from ".next/types/routes";
 import type { FC } from "react";
 
 import ChapterTOC from "@/components/content/Book/Chapter/ChapterTOC/ChapterTOC";
+import Breadcrumbs from "@/components/nav/Breadcrumbs/Breadcrumbs";
 import books from "@/content/books";
 import getBookOrThrow from "@/lib/data/Book/getBookOrThrow";
 
@@ -60,10 +61,26 @@ const BookChapterPage: FC<
 	const chapter = part.getChapterOrThrow(chapterSlug);
 
 	/*
+	 * Constants
+	 */
+	const crumbs = [
+		{
+			title: book.title,
+			href: `/books/${bookSlug}`,
+		},
+		{
+			title: part.title,
+			href: `/books/${bookSlug}/${partSlug}`,
+		},
+	];
+
+	/*
 	 * React element
 	 */
 	return (
 		<div className={styles.wrapper}>
+			<Breadcrumbs crumbs={crumbs} />
+
 			<article>
 				<h1>{title}</h1>
 

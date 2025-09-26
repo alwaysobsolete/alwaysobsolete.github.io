@@ -1,6 +1,7 @@
 import type { ParamMap } from ".next/types/routes";
 import type { FC } from "react";
 
+import Breadcrumbs from "@/components/nav/Breadcrumbs/Breadcrumbs";
 import PartTOC from "@/components/content/Book/Part/PartTOC/PartTOC";
 import books from "@/content/books";
 import getBookOrThrow from "@/lib/data/Book/getBookOrThrow";
@@ -54,10 +55,22 @@ const BookPartPage: FC<PageProps<"/books/[bookSlug]/[partSlug]">> = async ({
 	const part = book.getPartOrThrow(partSlug);
 
 	/*
+	 * Constants
+	 */
+	const crumbs = [
+		{
+			title: book.title,
+			href: `/books/${bookSlug}`,
+		},
+	];
+
+	/*
 	 * React element
 	 */
 	return (
 		<div className={styles.wrapper}>
+			<Breadcrumbs crumbs={crumbs} />
+
 			<article>
 				<h1>{title}</h1>
 

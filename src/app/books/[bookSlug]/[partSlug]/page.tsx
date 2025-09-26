@@ -32,7 +32,7 @@ export async function generateMetadata({
 	 */
 	const {
 		metadata: { title },
-	} = await import(`@/content/books/${bookSlug}/parts/${partSlug}/part.mdx`);
+	} = await import(`@/content/books/${bookSlug}/parts/${partSlug}/index.mdx`);
 
 	const book = getBookOrThrow({ slug: bookSlug });
 
@@ -77,7 +77,7 @@ const BookPartPage: FC<PageProps<"/books/[bookSlug]/[partSlug]">> = async ({
 	const {
 		default: Markdown,
 		metadata: { title },
-	} = await import(`@/content/books/${bookSlug}/parts/${partSlug}/part.mdx`);
+	} = await import(`@/content/books/${bookSlug}/parts/${partSlug}/index.mdx`);
 
 	// Get Book objects
 	const book = getBookOrThrow({ slug: bookSlug });

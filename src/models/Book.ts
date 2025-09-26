@@ -52,7 +52,7 @@ class Book {
 		/*
 		 * Parse data dir
 		 */
-		const mdxPath = path.join(bookPath, "book.mdx");
+		const mdxPath = path.join(bookPath, "index.mdx");
 		const { title } = await evalMetadata<BookMetadata>(mdxPath);
 
 		// Metadata assertions

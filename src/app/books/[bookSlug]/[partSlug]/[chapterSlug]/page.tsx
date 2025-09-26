@@ -1,6 +1,7 @@
 import type { ParamMap } from ".next/types/routes";
 import type { FC } from "react";
 
+import BookChapterNav from "@/components/content/Book/Chapter/ChapterNav/ChapterNav";
 import ChapterTOC from "@/components/content/Book/Chapter/ChapterTOC/ChapterTOC";
 import Breadcrumbs from "@/components/nav/Breadcrumbs/Breadcrumbs";
 import books from "@/content/books";
@@ -63,14 +64,17 @@ const BookChapterPage: FC<
 	/*
 	 * Constants
 	 */
+	const bookUrl = `/books/${bookSlug}`;
+	const partUrl = `${bookUrl}/${partSlug}`;
+
 	const crumbs = [
 		{
 			title: book.title,
-			href: `/books/${bookSlug}`,
+			href: bookUrl,
 		},
 		{
 			title: part.title,
-			href: `/books/${bookSlug}/${partSlug}`,
+			href: partUrl,
 		},
 	];
 
@@ -92,6 +96,8 @@ const BookChapterPage: FC<
 					showTitle={false}
 				/>
 			</article>
+
+			<BookChapterNav book={book} chapterSlug={chapterSlug} part={part} />
 		</div>
 	);
 };

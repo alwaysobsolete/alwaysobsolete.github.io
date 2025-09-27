@@ -10,6 +10,10 @@ const nextConfig: NextConfig = {
 		optimizePackageImports: ["@mantine/core", "@mantine/hooks"],
 	},
 
+	images: {
+		unoptimized: true,
+	},
+
 	output: "export",
 
 	pageExtensions: ["js", "jsx", "md", "mdx", "ts", "tsx"],

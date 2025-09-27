@@ -1,3 +1,4 @@
+import fs from "fs";
 import path from "path";
 
 import getSubdirs from "@/lib/fs/getSubdirs";
@@ -55,12 +56,17 @@ class Part {
 		 */
 		const slug = path.basename(partPath);
 		const url = `${bookUrl}/${slug}`;
+		const chaptersPath = path.join(partPath, "chapters");
 
-		const chapterPaths = await getSubdirs(path.join(partPath, "chapters"));
+		let chapters: Chapter[] = [];
 
-		const chapters = await Promise.all(
-			chapterPaths.map((chapterPath) => Chapter.init(chapterPath, slug, url)),
-		);
+		if (fs.existsSync(chaptersPath)) {
+			const chapterPaths = await getSubdirs(chaptersPath);
+
+			chapters = await Promise.all(
+				chapterPaths.map((chapterPath) => Chapter.init(chapterPath, slug, url)),
+			);
+		}
 
 		return new Part({
 			bookSlug,

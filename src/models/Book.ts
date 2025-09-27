@@ -1,3 +1,4 @@
+import fs from "fs";
 import path from "path";
 
 import getSubdirs from "@/lib/fs/getSubdirs";
@@ -65,12 +66,17 @@ class Book {
 		 */
 		const slug = path.basename(bookPath);
 		const url = `/books/${slug}`;
+		const partsPath = path.join(bookPath, "parts");
 
-		const partPaths = await getSubdirs(path.join(bookPath, "parts"));
+		let parts: Part[] = [];
 
-		const parts = await Promise.all(
-			partPaths.map((partPath) => Part.init(partPath, slug, url)),
-		);
+		if (fs.existsSync(partsPath)) {
+			const partPaths = await getSubdirs(path.join(bookPath, "parts"));
+
+			parts = await Promise.all(
+				partPaths.map((partPath) => Part.init(partPath, slug, url)),
+			);
+		}
 
 		return new Book({ parts, slug, title, url });
 	}

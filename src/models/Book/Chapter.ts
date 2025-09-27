@@ -1,3 +1,4 @@
+import fs from "fs";
 import fsPromises from "fs/promises";
 import path from "path";
 
@@ -55,17 +56,21 @@ class Chapter {
 		 */
 		const slug = path.basename(chapterPath);
 		const url = `${partUrl}/${slug}`;
-
 		const articlesPath = path.join(chapterPath, "articles");
-		const entPaths = await fsPromises.readdir(articlesPath);
 
-		const articlePaths = entPaths
-			.filter((entPath) => path.extname(entPath) === ".mdx")
-			.map((entPath) => path.join(articlesPath, entPath));
+		let articles: Article[] = [];
 
-		const articles = await Promise.all(
-			articlePaths.map((articlePath) => Article.init(articlePath, slug, url)),
-		);
+		if (fs.existsSync(articlesPath)) {
+			const entPaths = await fsPromises.readdir(articlesPath);
+
+			const articlePaths = entPaths
+				.filter((entPath) => path.extname(entPath) === ".mdx")
+				.map((entPath) => path.join(articlesPath, entPath));
+
+			articles = await Promise.all(
+				articlePaths.map((articlePath) => Article.init(articlePath, slug, url)),
+			);
+		}
 
 		return new Chapter({
 			articles,

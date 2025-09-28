@@ -83,7 +83,6 @@ const BookPage: FC<PageProps<"/books/[bookSlug]">> = async ({ params }) => {
 		<div className={styles.wrapper}>
 			<article className="markdown-body">
 				<h1>{title}</h1>
-				<p>By: {book.authors.join(", ")}</p>
 
 				<Markdown />
 

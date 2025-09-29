@@ -1,0 +1,21 @@
+.wrapper {
+	display: flex;
+	flex-wrap: wrap;
+	gap: var(--mantine-spacing-md);
+	margin: var(--mantine-spacing-md) 0;
+	padding: 0 var(--mantine-spacing-md);
+
+	.brand {
+		color: var(--mantine-color-dimmed);
+		font-family: monospace;
+		font-weight: bolder;
+
+		a {
+			text-decoration: none;
+
+			&:visited {
+				color: inherit;
+			}
+		}
+	}
+}

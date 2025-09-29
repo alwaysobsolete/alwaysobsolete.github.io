@@ -1,0 +1,15 @@
+.wrapper {
+	color: var(--mantine-color-dimmed);
+	font-family: monospace;
+	font-size: 0.75rem;
+	margin-bottom: var(--mantine-spacing-md);
+
+	a {
+		&:visited {
+			color: inherit;
+		}
+
+		line-height: 1rem;
+		text-decoration: none;
+	}
+}

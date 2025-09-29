@@ -5,8 +5,10 @@ import {
 	MantineProvider,
 	mantineHtmlProps,
 } from "@mantine/core";
-import "@mantine/core/styles.css";
 
+import MainMenu from "@/components/nav/MainMenu/MainMenu";
+
+import "@mantine/core/styles.css";
 import "@/styles/globals.scss";
 
 // @todo
@@ -26,7 +28,11 @@ const RootLayout: FC<PropsWithChildren> = ({ children }) => {
 			</head>
 
 			<body>
-				<MantineProvider defaultColorScheme="dark">{children}</MantineProvider>
+				<MantineProvider defaultColorScheme="dark">
+					<MainMenu />
+
+					{children}
+				</MantineProvider>
 			</body>
 		</html>
 	);

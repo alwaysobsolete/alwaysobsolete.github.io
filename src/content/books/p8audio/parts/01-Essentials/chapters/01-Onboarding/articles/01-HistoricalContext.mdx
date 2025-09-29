@@ -1,0 +1,97 @@
+export const metadata = {
+    title: "A Brief History of Chiptunes",
+};
+
+[Chiptunes](https://en.wikipedia.org/wiki/Chiptune) are to music, as [pixel art](https://en.wikipedia.org/wiki/Pixel_art) is to illustration. Each is an abstract, low-fidelity representation of a "higher" art form, created out of necessity due to the technological limitations of late 20th-century [microcomputers](https://en.wikipedia.org/wiki/Microcomputer). Of course, just because art is low-fidelity doesn't necessarily mean it's "crude"; chiptune composers and pixel artists can achieve incredible amounts of expressiveness within the confines of their respective mediums.
+
+Today, artists may reach for such abstractions out of pragmatism; lower-fidelity art often takes less time, and therefore, money, to create; or artists may simply choose to create "lo-fi" as an aesthetic choice. There is something romantic about nostalgia for simpler times, and it's arguable that the creation of art using low-tech means or aesthetics has become an art movement unto itself. The popularity of Pico-8 among both creators and consumers of video games speaks volumes, pun somewhat intended.
+
+<figure>
+<iframe src="https://www.youtube.com/embed/JUhWGn55RQg?si=18f0CrV22saGYzUP" title="YouTube video player" frameBorder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" allowFullScreen />
+<figcaption>
+<small>
+<em>
+<a href="https://www.lexaloffle.com/bbs/?pid=74526">neon</a> by <a href="https://luca.games/">lucatron</a>
+</em>
+</small>
+</figcaption>
+</figure>
+
+In order to understand Pico-8's virtual [Audio Processing Unit](https://en.wikipedia.org/wiki/Sound_chip) (vAPU) and audio creation tools, it's helpful to understand the context in which they exist. Let's take a brief look at the history of hardware and software used to create video-game audio before high-fidelity digital audio playback became affordable and common.
+
+## Programmable Sound Generators
+
+<figure>
+<a title="androSID, CC BY-SA 3.0 &lt;https://creativecommons.org/licenses/by-sa/3.0&gt;, via Wikimedia Commons" href="https://commons.wikimedia.org/wiki/File:6581_in_ceramic_DIP.jpg">
+<img width="256" alt="6581 in ceramic DIP" src="https://upload.wikimedia.org/wikipedia/commons/0/05/6581_in_ceramic_DIP.jpg" />
+</a>
+<figcaption>
+<small>
+<em>
+<a href="https://en.wikipedia.org/wiki/MOS_Technology_6581">MOS Technology 6581 Sound Interface Device (SID)</a>
+</em>
+</small>
+</figcaption>
+</figure>
+
+Through the [third generation](https://en.wikipedia.org/wiki/History_of_video_game_consoles#Third_generation_(1983%E2%80%932003)) of video game hardware, most home consoles and arcade boards were packaged with [Programmable Sound Generators](https://en.wikipedia.org/wiki/Programmable_sound_generator) (PSGs). A PSG is a simple synthesizer chip capable of producing outputs using basic waveform shapes, usually [pulse waves](https://en.wikipedia.org/wiki/Pulse_wave) or [noise](https://en.wikipedia.org/wiki/Colors_of_noise). The majority of PSG chips included four channels; three for generating pitched tonal waveforms, and a single noise generator. Some PSGs were also capable of [PCM audio](https://en.wikipedia.org/wiki/Pulse-code_modulation) playback, but due to storage and memory constraints of the era, usage was often limited to playback of brief samples.
+
+By the [fourth generation](https://en.wikipedia.org/wiki/History_of_video_game_consoles#Fourth_generation_(1987%E2%80%932004)), video game consoles began implementing more advanced sound chips, capable of [frequency modulation](#frequency-modulation-synthesis) or other types of synthesis, and digital [CD audio](https://en.wikipedia.org/wiki/Compact_Disc_Digital_Audio).
+
+Two notable PSGs:
+
+* [Game Boy APU (Sharp LR35902)](https://en.wikipedia.org/wiki/Game_Boy#Technical_specifications)
+
+  Embedded in the [Game Boy](https://en.wikipedia.org/wiki/Game_Boy#Technical_specifications)'s Sharp LR35902 microcontroller unit, this PSG remains a relatively popular synth choice among contemporary musicians for its distinctive and nostalgic lo-fi sound. Unlike most PSGs, the Game Boy APU features two pulse channels instead of three, with the third channel's tone generator being replaced by a 4-bit wavetable synth. Due to its inclusion in both the Game Boy and [Game Boy Color](https://en.wikipedia.org/wiki/Game_Boy_Color), the Sharp LR35902 contains what is likely the highest-selling PSG of all-time.
+
+* [SID (MOS Technology 6581 Sound Interface Device)](https://en.wikipedia.org/wiki/MOS_Technology_6581)
+
+  Synonymous with the [Commodore 64](https://en.wikipedia.org/wiki/Commodore_64), the MOS Technology 6581 Sound Interface Device, often simply referred to as "SID", is extremely versatile and capable of producing a wide range of sounds. Despite featuring only three-channel output (on paper), SID is perhaps the closest historical PSG relative to Pico-8's vAPU. In contrast to most PSGs, which feature fixed-function tone oscillators capable of outputting only pulse waves or noise, SID's oscillators are capable of outputting multiple waveform shapes per channel ([triangle](https://en.wikipedia.org/wiki/Triangle_wave), [sawtooth](https://en.wikipedia.org/wiki/Sawtooth_wave), pulse, noise, and unofficially, combinations of the former three). The SID chip also supports PCM playback via an undocumented method, though unlike Pico-8, it is the result of a [design flaw](https://en.wikipedia.org/wiki/MOS_Technology_6581#Design) rather than a [hidden feature](https://www.lexaloffle.com/bbs/?tid=41991).
+
+## Wavetable Synthesis
+
+<figure>
+<img alt="Xfer Records Serum 2, a modern wavetable software synth" src="/content/books/p8audio/wavetable_osc-4c879a8341df022946994ace700b6d511153c786728d1825b67e12e9767dca41.png" width="200px" />
+<figcaption>
+<small>
+<em>
+<a href="https://xferrecords.com/products/serum-2">Xfer Records Serum 2</a>, a modern wavetable software synth
+</em>
+</small>
+</figcaption>
+</figure>
+
+[Wavetable synthesis](https://en.wikipedia.org/wiki/Wavetable_synthesis) is one of the earliest forms of digital synthesis, and perhaps surprisingly, precedes the invention of [analog synthesis](https://en.wikipedia.org/wiki/Analog_synthesizer). Invented by [Max Matthews](https://en.wikipedia.org/wiki/Max_Mathews) at the legendary [Bell Labs](https://en.wikipedia.org/wiki/Bell_Labs) in 1958, Matthews created the concept while working on the second generation of his influential [MUSIC-N](https://en.wikipedia.org/wiki/MUSIC-N) program.
+
+Unlike other forms of synthesis which begin by outputting a simple waveform shape, wavetable synthesis begins with the output of an single-cycle waveform of arbitrary complexity, limited only by the [bit depth](https://en.wikipedia.org/wiki/Audio_bit_depth) and [sample rate](https://en.wikipedia.org/wiki/Sampling_(signal_processing)) of the synthesizer's wavetable. Wavetable synths may allow users to select from a "table" of pre-defined simple or complex waveform shapes, or allow the user to provide their own. A typical wavetable synth can cycle through the table, and digitally interpolate between adjacent waveforms, allowing for smooth playback and evolving timbre over time. 
+
+A simple form of wavetable synthesis was introduced in [Pico-8 0.2.6](https://www.lexaloffle.com/bbs/?tid=140421), allowing the user to provide up to 8 arbitrary waveform shapes in place of [sfx instruments](https://www.lexaloffle.com/dl/docs/pico-8_manual.html#SFX_Instruments). This topic will be covered more in-depth in a later chapter.
+
+## Music Trackers
+
+<figure>
+<img alt="https://en.wikipedia.org/wiki/Music_Macro_Language" src="/content/books/p8audio/ultimatesoundtracker.png" />
+<figcaption>
+<small>
+<em>
+<a href="https://en.wikipedia.org/wiki/Ultimate_Soundtracker">Ultimate Soundtracker</a> for Commodore Amiga
+</em>
+</small>
+</figcaption>
+</figure>
+
+A [music tracker](https://en.wikipedia.org/wiki/Music_tracker) is a program that facilitates the [sequencing](https://en.wikipedia.org/wiki/Music_sequencer) of musical patterns for playback on one or more sound chips. The first commerically available music tracker was [Ultimate Soundtracker](https://en.wikipedia.org/wiki/Ultimate_Soundtracker) for the [Commodore Amiga](https://en.wikipedia.org/wiki/Amiga). Prior to the release of Ultimate Soundtracker and the flood of similar programs that followed for non-Amiga platforms, video game composers used in-house sequencing tools, or programmed instructions to send to the sound chip directly via [Music Macro Language](https://en.wikipedia.org/wiki/Music_Macro_Language) or [assembly language](https://en.wikipedia.org/wiki/Assembly_language).
+
+## Pico-8
+
+![Pico-8 pattern overview](/content/books/p8audio/01-01-patternview.gif)
+
+Pico-8's virtual APU is something like the child of the SID and Game Boy APU. It offers four monophonic channels, capable of playing 8 basic waveform shapes, or up to 8 user-provided waveforms, at a sample rate of 22050Hz. Pico-8 provides various effects which can be applied to each of the four channels, such as distortion, detune, and reverb. A fifth channel is available for PCM audio playback at a sample rate of 5512.5Hz, though achieving sync with the vAPU can be difficult.
+
+![Pico-8 visual sfx editor](/content/books/p8audio/01-01-visualsequence.gif)
+
+Pico-8's audio creation tools come in the form of a music tracker offering multiple view modes, including a visual sound effect editor. The tracker data is represented in sequences, each "note" (or "step") of which represents an arbitrary length of "ticks", the smallest unit of time a tracker program can generate a sound for. This representation of notes over time is similar to the [Time Unit Box System](https://en.wikipedia.org/wiki/Time_unit_box_system) (TUBS).
+
+Pico-8's tracker ticks are played back at a rate of [approximately 120Hz](https://www.lexaloffle.com/bbs/?pid=132138#p), meaning each tick represents about 1/120th of a second. Through the fourth generation of video game consoles, the update rate of software (like music trackers) was tied directly to the [refresh rate](https://en.wikipedia.org/wiki/Refresh_rate) of the display. For [NTSC](https://en.wikipedia.org/wiki/NTSC) regions, this rate was 60Hz. Pico-8's tick rate of 120Hz is twice as fast by comparison, and this speed allows us to create unique sequences of sounds that wouldn't have necessarily been possible or practical on vintage video game platforms.
+
+Additionally, for most vintage platforms, tracker data needs to be compiled to a set of raw instructions to be fed to the sound chip by the main program, which can potentially cost a great deal of CPU consumption and cause slowdown. In Pico-8, this step is "free", as no compiling is required and the complexity of instructions sent to the virtual APU causes no additional load on the virtual CPU.

@@ -1,0 +1,59 @@
+export const metadata = {
+    title: "Voicings",
+};
+
+It's probably not a coincidence, that the most common type of [chord](https://en.wikipedia.org/wiki/Chord_(music)) is a [triad](https://en.wikipedia.org/wiki/Triad_(music)), and that most [PSGs](https://en.wikipedia.org/wiki/Programmable_sound_generator) offer at least three tone channels.
+
+Being able to play a triad allows us to express at least an average amount of [harmonic tension](https://en.wikipedia.org/wiki/Harmony), so let's try one out. Open Pico-8, select waveform `0` (triangle wave) and a volume of `5`, then punch in a [C-Major](https://en.wikipedia.org/wiki/C_major) [triad chord](https://en.wikipedia.org/wiki/Triad_(music)), `C-2`, `E-2`, `G-2`. Use one pitch per sequence, and fill each step of the sequence. Then, add your three sequences to a pattern. It should look like this:
+
+
+![A C-Major triad in Pico-8](/content/books/p8audio/02-01-01-c-major-triad.gif)
+
+```
+[sfx]030100180a180a180a180a180a180a180a180a180a180a180a180a180a180a180a180a180a180a180a180a180a180a180a180a180a180a180a180a180a180a180a180a01100000011c0a1c0a1c0a1c0a1c0a1c0a1c0a1c0a1c0a1c0a1c0a1c0a1c0a1c0a1c0a1c0a1c0a1c0a1c0a1c0a1c0a1c0a1c0a1c0a1c0a1c0a1c0a1c0a1c0a1c0a1c0a1c0a01100000021f0a1f0a1f0a1f0a1f0a1f0a1f0a1f0a1f0a1f0a1f0a1f0a1f0a1f0a1f0a1f0a1f0a1f0a1f0a1f0a1f0a1f0a1f0a1f0a1f0a1f0a1f0a1f0a1f0a1f0a1f0a1f0a01100000000102443[/sfx]
+```
+
+It sounds nice, but it's not very interesting.
+
+## SATB
+
+<figure>
+<a href="https://en.wikipedia.org/wiki/File:Wachet_auf_2.jpg">
+<img alt="Four-voice SATB arrangement of Bach's Cantata BWV 140."src="https://upload.wikimedia.org/wikipedia/commons/3/35/Wachet_auf_2.jpg" width="200" />
+</a>
+<figcaption>
+<small>
+<em>
+Four-voice SATB arrangement of Bach's Cantata BWV 140.
+</em>
+</small>
+</figcaption>
+</figure>
+
+Generally, when you're writing the biggest or most impactful moments of your music, you'll want to try to cover as much of the frequency spectrum as possible. To that end, concert music is often written in four-part arrangements, with each part covering a range of the frequency spectrum; [Soprano](https://en.wikipedia.org/wiki/Soprano), [Alto](https://en.wikipedia.org/wiki/Alto), [Tenor](https://en.wikipedia.org/wiki/Tenor), [Bass](https://en.wikipedia.org/wiki/Bass_(voice_type)) ([SATB](https://en.wikipedia.org/wiki/SATB)). Pico-8 generously allows us to use all four channels as a tone channel, so go ahead and add a `C-3` to channel `3`, to top off our chord.
+
+![A C-Major triad with a C-3 added](/content/books/p8audio/02-01-01-c-major-plus.png)
+
+```
+[sfx]040100180a180a180a180a180a180a180a180a180a180a180a180a180a180a180a180a180a180a180a180a180a180a180a180a180a180a180a180a180a180a180a180a01100000011c0a1c0a1c0a1c0a1c0a1c0a1c0a1c0a1c0a1c0a1c0a1c0a1c0a1c0a1c0a1c0a1c0a1c0a1c0a1c0a1c0a1c0a1c0a1c0a1c0a1c0a1c0a1c0a1c0a1c0a1c0a1c0a01100000021f0a1f0a1f0a1f0a1f0a1f0a1f0a1f0a1f0a1f0a1f0a1f0a1f0a1f0a1f0a1f0a1f0a1f0a1f0a1f0a1f0a1f0a1f0a1f0a1f0a1f0a1f0a1f0a1f0a1f0a1f0a1f0a0110000003240a240a240a240a240a240a240a240a240a240a240a240a240a240a240a240a240a240a240a240a240a240a240a240a240a240a240a240a240a240a240a240a01100000000102033[/sfx]
+```
+
+Now that we have our four SATB parts, let's break them into different octaves to better cover the frequency spectrum. Change each channel so it plays the same pitch, but in a different octave; ie, `C-1`, `E-2`, `G-3`, `C-4`. It should look like this:
+
+![A C-Major chord with each note in different octaves](/content/books/p8audio/02-01-01-c-major-octaves.png)
+
+```
+[sfx]0401040c0a0c0a0c0a0c0a0c0a0c0a0c0a0c0a0c0a0c0a0c0a0c0a0c0a0c0a0c0a0c0a0c0a0c0a0c0a0c0a0c0a0c0a0c0a0c0a0c0a0c0a0c0a0c0a0c0a0c0a0c0a0c0a01100000011c0a1c0a1c0a1c0a1c0a1c0a1c0a1c0a1c0a1c0a1c0a1c0a1c0a1c0a1c0a1c0a1c0a1c0a1c0a1c0a1c0a1c0a1c0a1c0a1c0a1c0a1c0a1c0a1c0a1c0a1c0a1c0a01100000052b0a2b0a2b0a2b0a2b0a2b0a2b0a2b0a2b0a2b0a2b0a2b0a2b0a2b0a2b0a2b0a2b0a2b0a2b0a2b0a2b0a2b0a2b0a2b0a2b0a2b0a2b0a2b0a2b0a2b0a2b0a2b0a0110000006300a300a300a300a300a300a300a300a300a300a300a300a300a300a300a300a300a300a300a300a300a300a300a300a300a300a300a300a300a300a300a300a01100000040105063[/sfx]
+```
+
+The chord sounds fuller now, but it's also quite a bit more shrill. In *[Loudness](/books/p8audio/01-Essentials/02-Fundamentals/03-Loudness)*, we learned about [equal-loudness contours](https://en.wikipedia.org/wiki/Equal-loudness_contour) and how our pitch/frequency choices might influence how we should set volume levels for different pitches. Let's apply that knowledge by setting the volume of of the lowest octave to `7`, and lowering the volume of each successive octave by `2`.
+
+![C-Major chord with balanced volume levels](/content/books/p8audio/02-01-01-c-major-volume.png)
+
+```
+[sfx]0401070c0e0c0e0c0e0c0e0c0e0c0e0c0e0c0e0c0e0c0e0c0e0c0e0c0e0c0e0c0e0c0e0c0e0c0e0c0e0c0e0c0e0c0e0c0e0c0e0c0e0c0e0c0e0c0e0c0e0c0e0c0e0c0e01100000011c0a1c0a1c0a1c0a1c0a1c0a1c0a1c0a1c0a1c0a1c0a1c0a1c0a1c0a1c0a1c0a1c0a1c0a1c0a1c0a1c0a1c0a1c0a1c0a1c0a1c0a1c0a1c0a1c0a1c0a1c0a1c0a01100000082b062b062b062b062b062b062b062b062b062b062b062b062b062b062b062b062b062b062b062b062b062b062b062b062b062b062b062b062b062b062b062b0601100000093002300230023002300230023002300230023002300230023002300230023002300230023002300230023002300230023002300230023002300230023002300201100000070108093[/sfx]
+```
+
+## Homework
+
+Try changing the waveform shape used in each channel. As you cycle through the waveform shapes, refer to *[Fundamentals](../../../01-Essentials/02-Fundamentals)* as needed, to think about the frequency content (and the amplitude of each harmonic) of each waveform. Use what you've learned so far, and your ears, to inform your decisions about how you might want to adjust the volume of each note, or which waveform shape to use for each channel.

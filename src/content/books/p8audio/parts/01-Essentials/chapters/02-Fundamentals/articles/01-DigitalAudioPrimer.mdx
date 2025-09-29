@@ -1,0 +1,58 @@
+export const metadata = {
+    title: "Digital Audio Primer",
+};
+
+<figure>
+<a href="https://upload.wikimedia.org/wikipedia/commons/1/1b/PulseTrain.png">
+<img alt="Pulse wave train" src="https://upload.wikimedia.org/wikipedia/commons/1/1b/PulseTrain.png" />
+</a>
+<figcaption>
+<small>
+<em>
+Pulse wave train
+</em>
+</small>
+</figcaption>
+</figure>
+
+In *[A Brief History of Chiptunes](./../../01-Onboarding/01-HistoricalContext)*, we learned that many [PSGs](https://en.wikipedia.org/wiki/Programmable_sound_generator) were only capable of producing [pulse waves](https://en.wikipedia.org/wiki/Pulse_wave); but why is this the case, instead of some other waveform shape?
+
+The answer is because early digital sound chips were designed to be produced at the lowest-possible cost, and because they are digital, they naturally operate in [binary](https://en.wikipedia.org/wiki/Binary_number). A pulse wave is the simplest digital representation of an audio signal, it is either "on" or "off". The duration of time the signal is "on" during a single [period](https://en.wikipedia.org/wiki/Frequency) is referred to as the "[duty cycle](https://en.wikipedia.org/wiki/Duty_cycle)". As you might expect, the most primitive way of getting digital audio out of a computer system was via playback through a 1-bit output, commonly referred to as a "[PC speaker](https://en.wikipedia.org/wiki/PC_speaker)" or "buzzer".
+
+## Signal Sampling
+
+<figure>
+<a href="https://en.wikipedia.org/wiki/File:Signal_Sampling.svg">
+<img alt="Signal sampling representation" src="https://upload.wikimedia.org/wikipedia/commons/c/c3/Signal_Sampling.svg" />
+</a>
+<figcaption>
+<small>
+<em>
+Signal sampling representation
+</em>
+</small>
+</figcaption>
+</figure>
+
+When it comes to turning a 1-bit signal into something we can hear, there is more to [digital-to-analog conversion](https://en.wikipedia.org/wiki/Digital-to-analog_converter) than covered by the scope of this article, but we can generally think of the "on" (`1`) state as the "crest" of the sound wave, and the "off" (`0`) state as the "trough" of the sound wave. In other words, in order to express a full wave-cycle, a minimum of two bits is required, and each of these bits is referred to as a "[sample](https://en.wikipedia.org/wiki/Sampling_(signal_processing))". (Not to be confused with "[sampling](https://en.wikipedia.org/wiki/Sampling_(music))".)
+
+The number of samples contained in a single second is referred to as the "[sample rate](https://en.wikipedia.org/wiki/Sampling_(signal_processing))" of digital audio. Therefore, to express a waveform with a wavelength of 100[Hz](https://en.wikipedia.org/wiki/Hertz), we would need a minimum sample rate of 200Hz. This calculation is referred to as the "[Nyquist rate](https://en.wikipedia.org/wiki/Nyquist_rate)", while the maximum frequency capable of being expressed within a given sample rate is referred to as the "[Nyquist frequency](https://en.wikipedia.org/wiki/Nyquist_frequency)".
+
+Of course, 1-bit output isn't very musical or pleasant to listen to, since every frequency we hear will be at the same [amplitude](https://en.wikipedia.org/wiki/Amplitude). While sample rate allows us to determine which wavelengths, and therefore, which [musical pitches](https://en.wikipedia.org/wiki/Pitch_(music)) we are able to express in our audio, the "bit depth" of each sample is equally important, as it allows for [dynamics](https://en.wikipedia.org/wiki/Dynamics_(music)), and the expression of waveform shapes more complex than a pulse wave; or at the very least, if our sound chip is only capable of outputting pulse waves, we will have the ability to play them at varying amplitudes.
+
+## Pico-8 Sound Fidelity
+
+<figure>
+<img alt="Spectrum graph of a Pico-8 song" src="/content/books/p8audio/02-01-spectrum.png" />
+<figcaption>
+<small>
+<em>
+Spectrum graph of a Pico-8 song, viewed in <a href="https://www.audacityteam.org/">Audacity</a>
+</em>
+</small>
+</figcaption>
+</figure>
+
+When we typically think of digital audio specs, it is usually the ["Red Book" CD audio](https://en.wikipedia.org/wiki/CD_audio) standard, which specifies a bit depth of 16 bits, and a sample rate of 44100Hz. The average audible frequency range that can be heard by the human ear is about 20Hz to 20000Hz, so the Nyquist frequency of CD audio is just above what most of us can audibly perceive.
+
+Pico-8's vAPU outputs 16-bit audio at a [sample rate](https://en.wikipedia.org/wiki/Sampling_(signal_processing)) of 22050Hz. This is half the sample rate of CD audio, and results in a decidedly "lo-fi" sound. Despite the limited frequency range, the Nyquist frequency of 11025Hz is well within the realm of conveying musical information, as [most musical instruments](https://en.wikipedia.org/wiki/Piano_key_frequencies) produce a [fundamental frequency](https://en.wikipedia.org/wiki/Fundamental_frequency) of less than 8000Hz, usually far less, so there is plenty of frequency headroom for Pico-8 instruments to play high pitches with [overtones](https://en.wikipedia.org/wiki/Overtone) and therefore, complex [timbre](https://en.wiktionary.org/wiki/Timbre).

@@ -1,0 +1,89 @@
+export const metadata = {
+    title: "Loudness",
+};
+
+In the [Digital Audio Primer](./01-DigitalAudioPrimer), we learned that the human ear is capable of perceiving a range of frequencies from 20Hz to 20000Hz, but how do our ears perceive the [amplitude](https://en.wikipedia.org/wiki/Amplitude) of those frequencies?
+
+Take a listen to this sfx, where we play back pitches `C-2` through `C-4` in succession:
+
+<video controls>
+<source src="/content/books/p8audio/02-03-c2-c5-loud.mp4" type="video/mp4" />
+<a href="/content/books/p8audio/02-03-c2-c5-loud.mp4">Example sound effect - loud</a>.
+</video>
+
+```
+[sfx]010000180a180a180a180a180a180a180a180a240a240a240a240a240a240a240a240a300a300a300a300a300a300a300a300a3c0a3c0a3c0a3c0a3c0a3c0a3c0a3c0a01010000[/sfx]
+```
+
+Did you notice? Each pitch is set to play at the same volume (amplitude), yet the perceived [loudness](https://en.wikipedia.org/wiki/Loudness) appears to increase with each octave.
+
+## Equal-Loudness Contours
+
+The phenomenon of different pitches having different perceived levels of loudness is due to the anatomy of the human ear, and a measurement exists for it, known as an [equal-loudness contour](https://en.wikipedia.org/wiki/Equal-loudness_contour):
+
+<figure>
+<a href="https://commons.wikimedia.org/wiki/File:Lindos1.svg#mw-jump-to-license">
+<img alt="Equal-loudness contour graph" src="https://upload.wikimedia.org/wikipedia/commons/4/47/Lindos1.svg" style={{ background: "white" }} />
+</a>
+<figcaption>
+<small>
+<em>
+<a href="https://en.m.wikipedia.org/wiki/International_Organization_for_Standardization">ISO</a> equal-loudness contours with frequency in Hz
+</em>
+</small>
+</figcaption>
+</figure>
+
+To sum up the graph, for frequencies below the 3kHz range, higher frequencies are generally perceived as being "louder". Compare the chart below to the equal-loudness contour, and you can see how each pitch requires less amplitude to reach the same level of loudness.
+
+| Pitch | SPN | Hz         |
+|-------|-----|------------|
+| C-2   | C-4 | 261.63 Hz  |
+| C-3   | C-5 | 523.25 Hz  |
+| C-4   | C-6 | 1046.50 Hz |
+| C-5   | C-7 | 2093.00 Hz |
+
+Let's try re-balancing our sfx for our human ears:
+
+<video controls>
+<source src="/content/books/p8audio/02-03-c2-c5-balanced.mp4" type="video/mp4" />
+<a href="/content/books/p8audio/02-03-c2-c5-balanced.mp4">Example sound effect - balanced</a>.
+</video>
+
+```
+[sfx]010000180a180a180a180a180a180a180a180a18081808180818081808180818081808180618061806180618061806180618061804180418041804180418041804180401010000[/sfx]
+```
+
+With the volumes adjusted, our sfx sounds a little more balanced. Here's a spectrum graph of the sfx before we made the adjustments:
+
+<figure>
+<img alt="Spectral analysis of sfx before balancing volume, as viewed in Audacity" src="/content/books/p8audio/02-03-sfx-loud.jpg" />
+<figcaption>
+<small>
+<em>
+Spectral analysis of sfx before balancing volume, as viewed in <a href="https://www.audacityteam.org/">Audacity</a>
+</em>
+</small>
+</figcaption>
+</figure>
+
+Here it is after. We can now draw a line over the peaks of the graph that more closely resemble an equal-loudness contour:
+
+<figure>
+<img alt="Spectral analysis of sfx after balancing volume, as viewed in Audacity" src="/content/books/p8audio/02-03-sfx-balanced.jpg" />
+<figcaption>
+<small>
+<em>
+Spectral analysis of sfx after balancing volume, as viewed in <a href="https://www.audacityteam.org/">Audacity</a>
+</em>
+</small>
+</figcaption>
+</figure>
+
+## Homework
+
+If you take your favorite song and run it through a spectral analyzer, chances are that it will loosely resemble that of an equal-loudness contour, particularly in the mid-range frequencies. Equal-loudness contours are not the be-all and end-all of [audio mixing](https://en.wikipedia.org/wiki/Audio_mixing), but they do give us valuable insight into how we might adjust our mixes to sound more balanced to the average ear.
+
+Try making your own basic sound effects, and experiment with various combinations of built-in waveform shapes. Use what you've learned in *[Waveforms and Harmonics](../02-WaveformsAndHarmonics)* to think about which overtones are added as you change from triangle waves, to square waves, to sawtooth waves. How does the pitch and frequency content of each waveform shape affect how you might want to adjust the volume of the notes? Try using a spectral analyzer, like the one provided with [Audacity](https://www.audacityteam.org/), to compare your audio to the equal-loudness contour graph, and use your findings to help guide your decisions. Don't get too caught up in visual analysis, though. Remember, your ears are always your most important tool!
+
+As an aside, spectral analysis and your ears are not the only important tools involved in the mixing process. The speakers you make music on must be able to faithfully reproduce sounds. This measurement is known as the speaker's [frequency response curve](https://en.wikipedia.org/wiki/Frequency_response). While you may not need a pair of professional [studio monitors](https://en.wikipedia.org/wiki/Studio_monitor) to make chiptunes, having some kind of monitoring system with a decent frequency response is important, particularly for hearing the low-end frequencies of the song.

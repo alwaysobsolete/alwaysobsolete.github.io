@@ -1,0 +1,63 @@
+export const metadata = {
+    title: "Chord Progressions",
+};
+
+Composing a new song can be an intimidating experience for both new and experienced songwriters. While covering the entire topic of composition is outside of the scope of this chapter, we can at least establish a point to jump off from. As a new songwriter, one of the most important decisions you will need to make is to establish the underlying chord progression(s). Let's begin our journey by examining the two most prolific chord progressions in contemporary western music.
+
+## I–V–vi–IV
+
+Also known as the "Axis progression", the I-V-vi-IV progression is the most common chord progression, and has been used in a significant number of [hit songs](https://en.wikipedia.org/wiki/I%E2%80%93V%E2%80%93vi%E2%80%93IV_progression#Songs_using_the_progression):
+
+<iframe src="https://www.youtube.com/embed/5pidokakU4I?si=7ERpTII-AYTPx0Mm" title="YouTube video player" frameBorder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerPolicy="strict-origin-when-cross-origin" allowFullScreen />
+
+Using a progression as prolific as the Axis progression may not seem like the most original idea, but its staying power and immediate recognizability are undeniable. As a game developer, you may choose to pattern your game after a familiar genre, with mechanics similar to some or many other games, because players will be able to pick it up immediately and know what to expect. That sense of familiarity is just as powerful in music, and it can help make the difference between whether your song is memorable or not.
+
+## Triads
+
+The most basic type of chord structure is a [triad](https://en.wikipedia.org/wiki/Triad_(music)), composed of the `I`, `III`, and `V` pitches of the [scale](https://en.wikipedia.org/wiki/Scale_(music)) relative to `I`.
+
+Here is the Axis progression in the key of C, using triad chords:
+
+|                                                     | I  | III  | V  |
+|-----------------------------------------------------|----|------|----|
+| I  [C Major](https://en.wikipedia.org/wiki/C_major) | C2 |  E2  | G2 |
+| V  [G Major](https://en.wikipedia.org/wiki/G_major) | G2 |  B2  | D3 |
+| vi [A minor](https://en.wikipedia.org/wiki/A_minor) | A2 |  C3  | E3 |
+| IV [F Major](https://en.wikipedia.org/wiki/F_major) | F2 |  A2  | C3 |
+
+Try entering the notes from the table into the tracker, it will sound like this:
+
+<video controls>
+<source src="/content/books/p8audio/02-01-02-axis.mp4" type="video/mp4" />
+<a href="/content/books/p8audio/02-01-02-axis.mp4">Axis Progression</a>.
+</video>
+
+```
+[sfx]030100180a180a180a180a180a180a180a180a1f0a1f0a1f0a1f0a1f0a1f0a1f0a1f0a210a210a210a210a210a210a210a210a1d0a1d0a1d0a1d0a1d0a1d0a1d0a1d0a01100000081c0a1c0a1c0a1c0a1c0a1c0a1c0a1c0a230a230a230a230a230a230a230a230a240a240a240a240a240a240a240a240a210a210a210a210a210a210a210a210a01100000101f0a1f0a1f0a1f0a1f0a1f0a1f0a1f0a260a260a260a260a260a260a260a260a280a280a280a280a280a280a280a280a240a240a240a240a240a240a240a240a01100000000810540[/sfx]
+```
+
+## vi-IV-I-V
+
+The second most common chord progression is a variation of the Axis progression, beginning on the `vi` chord instead of the root major `I` chord. This change modulates the chord progression's key from major to its [relative minor](https://en.wikipedia.org/wiki/Relative_key).
+
+|                                                     | I  | III  | V  |
+|-----------------------------------------------------|----|------|----|
+| vi [A minor](https://en.wikipedia.org/wiki/A_minor) | A2 |  C3  | E3 |
+| IV [F Major](https://en.wikipedia.org/wiki/F_major) | F2 |  A2  | C3 |
+| I  [C Major](https://en.wikipedia.org/wiki/C_major) | C2 |  E2  | G2 |
+| V  [G Major](https://en.wikipedia.org/wiki/G_major) | G2 |  B2  | D3 |
+
+If we enter this variation into the tracker, it sounds like this:
+
+<video controls>
+<source src="/content/books/p8audio/02-01-02-axis-alt.mp4" type="video/mp4" />
+<a href="/content/books/p8audio/02-01-02-axis-alt.mp4">Alternate Axis Progression</a>.
+</video>
+
+```
+[sfx]030100210a210a210a210a210a210a210a210a1d0a1d0a1d0a1d0a1d0a1d0a1d0a1d0a180a180a180a180a180a180a180a180a1f0a1f0a1f0a1f0a1f0a1f0a1f0a1f0a0110000008240a240a240a240a240a240a240a240a210a210a210a210a210a210a210a210a1c0a1c0a1c0a1c0a1c0a1c0a1c0a1c0a230a230a230a230a230a230a230a230a0110000010280a280a280a280a280a280a280a280a240a240a240a240a240a240a240a240a1f0a1f0a1f0a1f0a1f0a1f0a1f0a1f0a260a260a260a260a260a260a260a260a01100000000810540[/sfx]
+```
+
+## Homework
+
+Look up the chord progressions used by your favorite songs and try recreating them in Pico-8. Use what you learned in *[Voicings](../01-Voicings)* to cover more of the frequency spectrum, trying different waveform shapes and adjusting volumes as necessary. Adjust the key from C Major / A minor to something else. How does it affect the feel of the chords? Since transposing to a different key will change the frequency content, should it also affect your decisions regarding waveform and volume settings?

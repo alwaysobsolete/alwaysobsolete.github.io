@@ -1,0 +1,87 @@
+export const metadata = {
+    title: "Glossary",
+};
+
+Pico-8 offers a variety of audio features, and some of the official names can be confusing when discussed outside of specific contexts. For example, in Pico-8's audio editor/tracker, we can create "sfx", short for "sound effects". This naming convention makes sense because we can playback any of these data structures arbitrarily, by using the [`sfx()` API call](https://www.lexaloffle.com/dl/docs/pico-8_manual.html#SFX) whenever we want to trigger a sound effect while running our main program; but in the context of musical data, the term "sfx" seems less than appropriate.
+
+To (hopefully) avoid confusion, below are some terms from the official Pico-8 documentation, along with alternate names which should already be familiar to electronic music composers. Depending on the context, either may be used throughout the series.
+
+## Glossary
+
+* Virtual [Audio Processing Unit (Sound Chip)](https://en.wikipedia.org/wiki/Sound_chip)
+
+    Throughout this guide, Pico-8's virtual Audio Processing Unit will often be referred to as "vAPU" for short.
+
+* [Sound Effect (SFX)](https://www.lexaloffle.com/dl/docs/pico-8_manual.html#SFX_Editor)
+
+    The sfx is Pico-8's main data structure for programming audio playback. It may sometimes be referred to as a "[sequence](https://en.wikipedia.org/wiki/Music_sequencer)", as storing this data is its main purpose.
+
+    ![Pico-8 sequence overview](/content/books/p8audio/01-02-sequences.png)
+
+* [Sequence](https://en.wikipedia.org/wiki/Music_sequencer)
+
+    The procession of commands which make up the main part of a single sfx.
+
+    ![Pico-8 sfx editor with sequence highlighted](/content/books/p8audio/01-02-sequence.png)
+
+* Note (Step, Subdivision)
+
+    Referred to as a "note" in the official documentation, a "step" is a subdivision of a sequence and contains pitch, waveform, volume, and effect command data. Since "note" also refers to musical concepts of pitch and/or rhythm, "step" will be strongly preferred.
+
+    ![Pico-8 sequence editor](/content/books/p8audio/01-02-note.png)
+
+* Tick
+
+    A unit of time used by tracker software, a "tick" is the smallest unit of time the software is capable of making sound for. In Pico-8, the tick speed is fixed at 120Hz and a sequence's `spd` setting refers to how many ticks each step of the sequence represents.
+
+    ![Pico-8 sequence editor with spd setting highlighted](/content/books/p8audio/01-02-spd.png)
+
+* Pitch
+
+    Pitch represents a specific musical frequency, ranging from `C-0` to `D#-5`. In Pico-8, pitches are notated two octaves down from standard tuning notation, eg, an `A-2` in Pico-8 is an `A-4` in [standard pitch notation](https://en.wikipedia.org/wiki/Scientific_pitch_notation).
+
+* Instrument (Basic Waveform)
+
+    A waveform represents an audio signal during a single oscillation of a pitch. Referred to as "instruments" in the official documentation, Pico-8 provides eight basic waveform shapes which can be played back on any channel at any time.
+
+    ![Pico-8 sequence editor with waveform shapes highlighted](/content/books/p8audio/01-02-waveforms.png)
+
+* [Custom Instrument](https://www.lexaloffle.com/dl/docs/pico-8_manual.html#SFX_Instruments)
+
+    Pico-8 allows for eight "custom instruments", corresponding to sfx IDs `0` - `7`. These sfx sequences can be triggered from any other sfx sequence in place of the eight standard waveforms, allowing for more detailed programming and/or transposition than normally allowed. For readers coming from the [LSDJ](https://littlesounddj.com/) community, custom instruments are analogous to "command tables". Custom instruments do not stack, meaning a sequence cannot trigger a custom instrument which in turn triggers another custom instrument. Instead, the basic waveform shape will be played.
+
+    ![Pico-8 sequence overview with instrument sequences highlighted](/content/books/p8audio/01-02-instruments.png)
+
+* [Waveform Instrument](https://www.lexaloffle.com/dl/docs/pico-8_manual.html#Waveform_Instruments) (Wavetable Frame)
+
+    [Pico-8 0.2.6](https://www.lexaloffle.com/bbs/?tid=140421) introduces a basic form of wavetable synthesis, allowing the user to specify up to 8 wavetable frames. Referred to in the official documentation as a "custom waveform", they are stored in place of custom custom instruments in sfx IDs `0` - `7`, and custom instruments can make use of custom waveforms in addition to the standard basic waveforms.
+
+    ![Pico-8 waveform instrument editor](/content/books/p8audio/01-02-waveform_editor.png)
+
+* [Effect](https://www.lexaloffle.com/dl/docs/pico-8_manual.html#Effects) (Command)
+
+    A command which can be assigned to any step of a sequence, altering its pitch, ampiltude, etc. Pico-8 offers seven effect commands: `slide`, `vibrato`, `drop`, `fade in`, `fade out`, `arpeggio fast`, `arpeggio slow`.
+
+    ![Pico-8 sequence editor with effect command column highlighted](/content/books/p8audio/01-02-effect_command.png)
+
+* [SFX Filter](https://www.lexaloffle.com/dl/docs/pico-8_manual.html#Filters)
+
+    A filter is an effect which is applied to an entire sfx sequence. Pico-8 offers five filters; `noiz`, `buzz`, `detune`, `reverb`, and `dampen`.
+
+    ![Pico-8 sequence editor with filters highlighted](/content/books/p8audio/01-02-sequence_effects.png)
+
+* [Pattern](https://www.lexaloffle.com/dl/docs/pico-8_manual.html#Music_Editor) (Program, Scene)
+
+    A pattern represents a set of up to four sfx sequences to be played back simultaneously. Patterns are chained together to create a song.
+
+    ![Pico-8 pattern view](/content/books/p8audio/01-02-patterns.png)
+
+* Channel
+
+    A channel represents a single [monophonic](https://en.wikipedia.org/wiki/Monophony) audio signal. Pico-8's four channels will always be referred to as "channel `0`", "channel `1`", "channel `2`", "channel `3`", as they appear from left-to-right, respectively, in Pico-8's audio editing tools.
+
+    ![Pico-8 tracker view with channels highlighted](/content/books/p8audio/01-02-channels.png)
+
+* Channel Filters
+
+    An filter effect applied to an entire channel. Pico-8 offers six channel filters; the same five filters that can be applied to sfx sequences, plus an extra effect which halves the channel's clock rate. Unlike sfx filters, channel filters must be invoked *at runtime* by a RAM poke, and therefore can't be pre-programmed into the standard vAPU audio data.

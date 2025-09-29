@@ -1,0 +1,100 @@
+export const metadata = {
+    title: "Waveforms and Harmonics",
+};
+
+![Pico-8 sequence editor with waveform shapes highlighted](/content/books/p8audio/02-02-waveforms.png)
+
+Pico-8 gives us eight pre-defined waveforms to work with:
+
+0. [Triangle Wave](https://en.wikipedia.org/wiki/Triangle_wave)
+
+1. "Tilted" Sawtooth Wave
+
+2. [Sawtooth Wave](https://en.wikipedia.org/wiki/Sawtooth_wave)
+
+3. [Square Wave](https://en.wikipedia.org/wiki/Square_wave) (50% [duty cycle](https://en.wikipedia.org/wiki/Duty_cycle) pulse wave)
+
+4. [Pulse Wave](https://en.wikipedia.org/wiki/Pulse_wave) (25% duty cycle)
+
+5. Organ ([Absolute](https://en.wikipedia.org/wiki/Absolute_phase) Triangle Wave)
+
+6. [Pink Noise](https://en.wikipedia.org/wiki/Pink_noise)
+
+7. Phaser ([Phase-Shifted](https://en.wikipedia.org/wiki/Phase_(waves)#Phase_shift) Triangle Wave)
+
+[Pico-8 0.2.6](https://www.lexaloffle.com/bbs/?tid=140421) introduces a new feature allowing the user to define custom waveform shapes. We will cover this topic in a later chapter.
+
+## It's All Sine Waves
+
+As you already know, sound is made by vibrations in the air, and the waveforms listed above represent different audio signals that control how a speaker reproduces these vibrations. But what is it that gives each of these waveforms their unique [timbre](https://en.wikipedia.org/wiki/Timbre)?
+
+If you haven't yet, please stop for a moment to explore [@bikibird](https://www.patreon.com/bikibird)'s *[Pico-8 Music Theory for Programmers, Lesson 1: Sound](https://bikibird.itch.io/music-theory)*.
+
+![Wait, it's all sine waves? Always has been.](/content/books/p8audio/02-02-all-sine-waves.png)
+
+In bikibird's lesson, we learn two important concepts:
+
+1. A [sine wave](https://en.wikipedia.org/wiki/Sine_wave) is the "purest" waveform shape, containing only the [fundamental frequency](https://en.wikipedia.org/wiki/Fundamental_frequency) of a musical note.
+
+2. All waveform shapes can be expressed by combining sine waves of different [frequency](https://en.wikipedia.org/wiki/Frequency), [amplitude](https://en.wikipedia.org/wiki/Amplitude), and [phase](https://en.wikipedia.org/wiki/Phase_(waves)).
+
+These concepts form the basis of the theory behind [additive synthesis](https://en.wikipedia.org/wiki/Additive_synthesis).
+
+To continue experimenting with this concept, try [Harmonics Explorer](https://teropa.info/harmonics-explorer/) by [Tero Parviainen](https://teropa.info/)
+
+## Harmonic Series
+
+During bikibird's interactive lesson, we experimented by adding a few [overtones](https://en.wikipedia.org/wiki/Overtone) to a fundamental frequency. In doing so, we slowly transformed the sine wave into a square wave, but how exactly does this work?
+
+The answer is the [harmonic series](https://en.wikipedia.org/wiki/Harmonic_series_(music)). The frequency of each added [harmonic](https://en.wikipedia.org/wiki/Harmonic_series_(music)#Partial,_harmonic,_fundamental,_inharmonicity,_and_overtone) is an integer multiple of the fundamental, and because they are integer multiples, we are always guaranteed to be able to fit the entire wave-cycle of the harmonic into the wavelength of the fundamental.
+
+<figure>
+<a href="https://en.wikipedia.org/wiki/Harmonic_series_(music)#/media/File:Harmonic_partials_on_strings.svg">
+<img alt="Harmonics of a string showing the periods of the pure-tone harmonics (period = 1/frequency)" src="https://upload.wikimedia.org/wikipedia/commons/c/c5/Harmonic_partials_on_strings.svg" style={{ background: "white" }} />
+</a>
+<figcaption>
+<small>
+<em>
+Harmonics of a string showing the periods of the pure-tone harmonics (period = 1/frequency)
+</em>
+</small>
+</figcaption>
+</figure>
+
+To create a sawtooth wave, add all the overtones in the harmonic series to the fundamental frequency, where the amplitude of each harmonic is the inverse of the fundamental's amplitude.  For example, if the fundamental frequency's amplitude is `1`, the next harmonic's amplitude will be `1/2`, the next, `1/3`, and so on.
+
+To create a square wave, like in bikibird's lesson, add only the odd-integer overtones, also with inverse amplitude to the fundamental.
+
+To create a triangle wave, like the square wave, add only odd-integer overtones, but this time the amplitude is the inverse square of the fundamental; ie, `1/(3^2)`, `1/(5^2)`, `1/(7^2)`, etc.
+
+<figure>
+<a href="https://en.wikipedia.org/wiki/File:Synthesis_sawtooth.gif">
+<img alt="Animation of the additive synthesis of a sawtooth wave with an increasing number of harmonics" src="https://upload.wikimedia.org/wikipedia/commons/d/d4/Synthesis_sawtooth.gif" />
+</a>
+<figcaption>
+<small>
+<em>
+Animation of the additive synthesis of a sawtooth wave with an increasing number of harmonics
+</em>
+</small>
+</figcaption>
+</figure>
+
+You may be wondering, if the sine wave is so important, then why is it missing from Pico-8's basic waveform shapes? In fact, this is actually the case for many [PSG](https://en.wikipedia.org/wiki/Programmable_sound_generator) chips. For analog hardware, producing a sine wave is no problem; but for digital hardware, sinusoidal calculation requires a relatively large amount of mathematical computation. For PSGs lacking the processing power, a triangle wave is provided instead, as it sounds somewhat similar to a sine wave and only requires a simple linear calculation to produce.
+
+## Homework
+
+<figure>
+<a href="https://en.wikipedia.org/wiki/File:Harmonic_series_intervals.png">
+<img alt="Harmonic series as musical notation with intervals between harmonics labeled." src="https://upload.wikimedia.org/wikipedia/commons/e/e8/Harmonic_series_intervals.png" />
+</a>
+<figcaption>
+<small>
+<em>
+Harmonic series as musical notation with intervals between harmonics labeled.
+</em>
+</small>
+</figcaption>
+</figure>
+
+The harmonic series represents [approximate musical intervals](https://en.wikipedia.org/wiki/File:Harmonic_series_intervals.png) above the fundamental. Experiment with Pico-8, and the resources listed in this article, and try to train your ear to recognize the various basic waveform shapes and the musical relationships of the added harmonics.

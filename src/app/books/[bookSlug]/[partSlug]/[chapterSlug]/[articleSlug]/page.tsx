@@ -2,8 +2,8 @@ import type { ParamMap } from ".next/types/routes";
 import type { Metadata } from "next";
 import type { FC } from "react";
 
-import ArticleNav from "@/components/content/Book/Article/ArticleNav/ArticleNav";
 import Breadcrumbs from "@/components/nav/Breadcrumbs/Breadcrumbs";
+import Siblings from "@/components/nav/Siblings/Siblings";
 import books from "@/content/books";
 import getBookOrThrow from "@/lib/data/Book/getBookOrThrow";
 
@@ -97,6 +97,7 @@ const BookArticlePage: FC<
 	/*
 	 * Constants
 	 */
+	// Breadcrumbs
 	const bookURL = `/books/${bookSlug}`;
 	const partURL = `${bookURL}/${partSlug}`;
 	const chapterURL = `${partURL}/${chapterSlug}`;
@@ -116,6 +117,17 @@ const BookArticlePage: FC<
 		},
 	];
 
+	// Siblings
+	const { next: nextPart, prev: prevPart } = book.getPartSiblings(part.slug);
+	const { next: nextChapter, prev: prevChapter } = part.getChapterSiblings(
+		chapter.slug,
+	);
+	const { next: nextArticle, prev: prevArticle } =
+		chapter.getArticleSiblings(articleSlug);
+
+	const next = nextArticle || nextChapter || nextPart;
+	const prev = prevArticle || prevChapter || prevPart;
+
 	/*
 	 * React component
 	 */
@@ -129,12 +141,7 @@ const BookArticlePage: FC<
 				<Markdown />
 			</article>
 
-			<ArticleNav
-				articleSlug={articleSlug}
-				book={book}
-				chapter={chapter}
-				part={part}
-			/>
+			<Siblings next={next} prev={prev} />
 		</div>
 	);
 };

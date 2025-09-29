@@ -2,9 +2,9 @@ import type { ParamMap } from ".next/types/routes";
 import type { Metadata } from "next";
 import type { FC } from "react";
 
-import BookPartNav from "@/components/content/Book/Part/PartNav/PartNav";
 import PartTOC from "@/components/content/Book/Part/PartTOC/PartTOC";
 import Breadcrumbs from "@/components/nav/Breadcrumbs/Breadcrumbs";
+import Siblings from "@/components/nav/Siblings/Siblings";
 import books from "@/content/books";
 import getBookOrThrow from "@/lib/data/Book/getBookOrThrow";
 
@@ -86,12 +86,16 @@ const BookPartPage: FC<PageProps<"/books/[bookSlug]/[partSlug]">> = async ({
 	/*
 	 * Constants
 	 */
+	// Get breadcrumbs
 	const crumbs = [
 		{
 			title: book.title,
 			href: `/books/${bookSlug}`,
 		},
 	];
+
+	// Get siblings
+	const { next, prev } = book.getPartSiblings(partSlug);
 
 	/*
 	 * React element
@@ -108,7 +112,7 @@ const BookPartPage: FC<PageProps<"/books/[bookSlug]/[partSlug]">> = async ({
 				<PartTOC baseURL={`/books/${bookSlug}`} part={part} showTitle={false} />
 			</article>
 
-			<BookPartNav book={book} partSlug={partSlug} />
+			<Siblings next={next} prev={prev} />
 		</div>
 	);
 };

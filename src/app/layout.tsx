@@ -6,6 +6,7 @@ import {
 	mantineHtmlProps,
 } from "@mantine/core";
 
+import FooterMenu from "@/components/nav/FooterMenu/FooterMenu";
 import MainMenu from "@/components/nav/MainMenu/MainMenu";
 
 import "@mantine/core/styles.css";
@@ -29,9 +30,16 @@ const RootLayout: FC<PropsWithChildren> = ({ children }) => {
 
 			<body>
 				<MantineProvider defaultColorScheme="dark">
-					<MainMenu />
+					<header>
+						<MainMenu />
+					</header>
 
-					{children}
+					<main>{children}</main>
+
+					<footer>
+						<FooterMenu />
+						<div className="copyright">Copyright © Always Obsolete 2025</div>
+					</footer>
 				</MantineProvider>
 			</body>
 		</html>

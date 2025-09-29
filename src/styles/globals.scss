@@ -17,11 +17,14 @@ body {
 }
 
 body {
-	color: var(--foreground);
 	background: var(--background);
+	color: var(--foreground);
+	display: flex;
+	flex-direction: column;
 	font-family: Arial, Helvetica, sans-serif;
 	-webkit-font-smoothing: antialiased;
 	-moz-osx-font-smoothing: grayscale;
+	min-height: 100vh;
 }
 
 * {
@@ -40,12 +43,25 @@ h1, h2, h3, h4, h5, h6 {
 	font-family: monospace,
 }
 
+main {
+	flex: 1;
+}
+
 ol, ul {
 	padding-left: var(--mantine-spacing-md);
 }
 
 ol.no-style, ul.no-style {
 	list-style-type: none;
+}
+
+.copyright {
+	color: var(--mantine-color-dimmed);
+	font-family: monospace;
+	font-size: 0.625rem;
+	margin: var(--mantine-spacing-xs) 0;
+	text-align: center;
+	width: 100%;
 }
 
 .flex {

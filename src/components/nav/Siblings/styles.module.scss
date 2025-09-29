@@ -1,0 +1,14 @@
+.wrapper {
+	display: flex;
+	flex-wrap: auto;
+	font-family: monospace;
+	gap: var(--mantine-spacing-md);
+	margin: var(--mantine-spacing-md) 0;
+	justify-content: center;
+	width: 100%;
+
+	:global .m_77c9d27d:where(:disabled:not([data-loading]), [data-disabled]:not([data-loading])) {
+		background: none;
+		border: calc(0.0625rem * var(--mantine-scale)) solid var(--mantine-color-dimmed);
+	}
+}

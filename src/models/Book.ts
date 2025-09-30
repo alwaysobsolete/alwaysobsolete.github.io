@@ -13,7 +13,6 @@ interface BookMetadata {
 
 class Book {
 	// Properties
-	public authors: string[];
 	public description?: string;
 	public imgSrc?: string;
 	public parts: Part[];
@@ -26,22 +25,7 @@ class Book {
 	 *
 	 * Use async Book.init() factory instead
 	 */
-	private constructor(book: Omit<ClassProps<Book>, "authors">) {
-		const authors: string[] = [];
-
-		book.parts.forEach((part) =>
-			part.chapters.forEach((chapter) =>
-				chapter.articles.forEach((article) => {
-					if (!authors.includes(article.author)) {
-						authors.push(article.author);
-					}
-				}),
-			),
-		);
-
-		authors.sort();
-
-		this.authors = authors;
+	private constructor(book: ClassProps<Book>) {
 		this.description = book.description;
 		this.imgSrc = book.imgSrc;
 		this.parts = book.parts;

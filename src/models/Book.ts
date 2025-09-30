@@ -6,12 +6,16 @@ import evalMetadata from "@/lib/mdx/evalMetadata";
 import Part from "@/models/Book/Part";
 
 interface BookMetadata {
+	description?: string;
+	imgSrc?: string;
 	title: string;
 }
 
 class Book {
 	// Properties
 	public authors: string[];
+	public description?: string;
+	public imgSrc?: string;
 	public parts: Part[];
 	public slug: string;
 	public title: string;
@@ -38,6 +42,8 @@ class Book {
 		authors.sort();
 
 		this.authors = authors;
+		this.description = book.description;
+		this.imgSrc = book.imgSrc;
 		this.parts = book.parts;
 		this.slug = book.slug;
 		this.title = book.title;
@@ -54,7 +60,8 @@ class Book {
 		 * Parse data dir
 		 */
 		const mdxPath = path.join(bookPath, "index.mdx");
-		const { title } = await evalMetadata<BookMetadata>(mdxPath);
+		const { description, imgSrc, title } =
+			await evalMetadata<BookMetadata>(mdxPath);
 
 		// Metadata assertions
 		if (!title) {
@@ -78,7 +85,7 @@ class Book {
 			);
 		}
 
-		return new Book({ parts, slug, title, url });
+		return new Book({ description, imgSrc, parts, slug, title, url });
 	}
 
 	/**

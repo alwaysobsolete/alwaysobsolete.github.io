@@ -1,0 +1,16 @@
+@mixin default {
+	display: flex;
+	margin-bottom: var(--mantine-spacing-md);
+	min-height: calc(100vw / 4);
+	position: relative;
+	width: 100vw;
+
+	img {
+		filter: saturate(50%);
+		margin-left: calc(var(--mantine-spacing-md) * -1);
+		object-fit: cover;
+		opacity: 50%;
+		position: absolute;
+		z-index: -1;
+	}
+}

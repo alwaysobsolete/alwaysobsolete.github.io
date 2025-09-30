@@ -1,9 +1,10 @@
 import type { ParamMap } from ".next/types/routes";
 import type { Metadata } from "next";
 import type { FC } from "react";
+import Image from "next/image";
+import Link from "next/link";
 
 import books from "@/content/books";
-import Link from "next/link";
 
 import "github-markdown-css/github-markdown-dark.css";
 import "@/styles/markdown.scss";
@@ -40,6 +41,14 @@ const BooksPage: FC = async () => {
 	 */
 	return (
 		<div className={styles.wrapper}>
+			<div className={styles.hero}>
+				<Image
+					alt="A bookshelf"
+					fill
+					src="/content/books/a-book-67049_1280.jpg"
+				/>
+			</div>
+
 			<article>
 				<h1>Books</h1>
 

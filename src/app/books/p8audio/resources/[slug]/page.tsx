@@ -89,6 +89,10 @@ const BookPage: FC<PageProps<"/books/p8audio/resources/[slug]">> = async ({
 	 */
 	const crumbs = [
 		{
+			title: "Books",
+			href: "/books",
+		},
+		{
 			title: book.title,
 			href: `/books/${book.slug}`,
 		},

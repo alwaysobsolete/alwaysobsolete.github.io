@@ -96,6 +96,10 @@ const BookPartPage: FC<PageProps<"/books/[bookSlug]/[partSlug]">> = async ({
 	// Get breadcrumbs
 	const crumbs = [
 		{
+			title: "Books",
+			href: "/books",
+		},
+		{
 			title: book.title,
 			href: `/books/${bookSlug}`,
 		},

@@ -111,6 +111,10 @@ const BookArticlePage: FC<
 
 	const crumbs = [
 		{
+			title: "Books",
+			href: "/books",
+		},
+		{
 			title: book.title,
 			href: bookURL,
 		},

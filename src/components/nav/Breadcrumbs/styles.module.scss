@@ -5,11 +5,15 @@
 	margin-bottom: var(--mantine-spacing-md);
 
 	a {
+		line-height: 1rem;
+		text-decoration: none;
+
 		&:visited {
 			color: inherit;
 		}
 
-		line-height: 1rem;
-		text-decoration: none;
+		&:hover {
+			color: var(--mantine-color-text);
+		}
 	}
 }

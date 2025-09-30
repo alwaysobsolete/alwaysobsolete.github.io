@@ -10,6 +10,7 @@ import getBookOrThrow from "@/lib/data/Book/getBookOrThrow";
 import "github-markdown-css/github-markdown-dark.css";
 import "@/styles/markdown.scss";
 import styles from "./styles.module.scss";
+import Breadcrumbs from "@/components/nav/Breadcrumbs/Breadcrumbs";
 
 /*
  * SSR
@@ -85,6 +86,16 @@ const BookPage: FC<PageProps<"/books/[bookSlug]">> = async ({ params }) => {
 	const book = getBookOrThrow({ slug: bookSlug });
 
 	/*
+	 * Constants
+	 */
+	const crumbs = [
+		{
+			title: "Books",
+			href: "/books",
+		},
+	];
+
+	/*
 	 * React element
 	 */
 	return (
@@ -92,6 +103,9 @@ const BookPage: FC<PageProps<"/books/[bookSlug]">> = async ({ params }) => {
 			<div className={styles.hero}>
 				<Image alt={`Cover art for ${book.title}`} fill src={imgSrc} />
 			</div>
+
+			<Breadcrumbs crumbs={crumbs} />
+
 			<article className="markdown-body">
 				<h1>{title}</h1>
 

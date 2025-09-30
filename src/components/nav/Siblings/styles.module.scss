@@ -11,4 +11,14 @@
 		background: none;
 		border: calc(0.0625rem * var(--mantine-scale)) solid var(--mantine-color-dimmed);
 	}
+
+	button {
+		height: inherit;
+		min-height: var(--button-height);
+
+		:global .mantine-Button-label {
+			padding: 0.5rem 0;
+			white-space: inherit;
+		}
+	}
 }

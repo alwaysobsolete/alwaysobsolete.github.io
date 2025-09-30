@@ -2,8 +2,8 @@ import type { ParamMap } from ".next/types/routes";
 import type { Metadata } from "next";
 import type { FC } from "react";
 import Image from "next/image";
-import Link from "next/link";
 
+import BookCard from "@/components/content/Book/BookCard/BookCard";
 import books from "@/content/books";
 
 import "github-markdown-css/github-markdown-dark.css";
@@ -46,6 +46,7 @@ const BooksPage: FC = async () => {
 					alt="A bookshelf"
 					fill
 					src="/content/books/a-book-67049_1280.jpg"
+					sizes="100vw"
 				/>
 			</div>
 
@@ -54,10 +55,10 @@ const BooksPage: FC = async () => {
 
 				<Markdown />
 
-				<ul>
+				<ul className={styles.bookList}>
 					{books.map((book) => (
 						<li key={book.slug}>
-							<Link href={`/books/${book.slug}`}>{book.title}</Link>
+							<BookCard book={JSON.parse(JSON.stringify(book))} />
 						</li>
 					))}
 				</ul>

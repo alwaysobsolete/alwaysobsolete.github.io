@@ -1,5 +1,11 @@
+@use "/src/styles/hero";
+
 .wrapper {
 	padding: 0 var(--mantine-spacing-md);
+
+	.hero {
+		@include hero.default;
+	}
 
 	:global .markdown-body {
 		background: none;

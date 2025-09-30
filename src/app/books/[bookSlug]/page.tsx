@@ -1,6 +1,7 @@
 import type { ParamMap } from ".next/types/routes";
 import type { Metadata } from "next";
 import type { FC } from "react";
+import Image from "next/image";
 
 import BookTOC from "@/components/content/Book/BookTOC/BookTOC";
 import books from "@/content/books";
@@ -63,7 +64,7 @@ const BookPage: FC<PageProps<"/books/[bookSlug]">> = async ({ params }) => {
 	// Get Article markdown and metadata
 	const {
 		default: Markdown,
-		metadata: { title },
+		metadata: { imgSrc, title },
 	} = await import(`@/content/books/${bookSlug}/index.mdx`);
 
 	let Appendix;
@@ -81,6 +82,9 @@ const BookPage: FC<PageProps<"/books/[bookSlug]">> = async ({ params }) => {
 	 */
 	return (
 		<div className={styles.wrapper}>
+			<div className={styles.hero}>
+				<Image alt={`Cover art for ${book.title}`} fill src={imgSrc} />
+			</div>
 			<article className="markdown-body">
 				<h1>{title}</h1>
 

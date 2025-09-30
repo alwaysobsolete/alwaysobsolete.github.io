@@ -25,7 +25,7 @@ const HomePage: FC = async () => {
 			</div>
 
 			<p className={styles.description}>
-				A blog about vintage, retro, and fantasy consoles.
+				A blog about vintage, retro, and fantasy video game consoles.
 			</p>
 
 			<article className="markdown-body">

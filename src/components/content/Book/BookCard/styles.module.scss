@@ -1,0 +1,22 @@
+.wrapper {
+	h2 {
+		a {
+			color: var(--mantine-color-text);
+			text-decoration: none;
+
+			&:visited {
+				color: inherit;
+			}
+		}
+	}
+
+	.section {
+		aspect-ratio: 2/1;
+		margin-bottom: var(--mantine-spacing-sm);
+		position: relative;
+
+		img {
+			object-fit: cover;
+		}
+	}
+}

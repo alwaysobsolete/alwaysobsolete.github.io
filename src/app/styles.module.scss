@@ -1,0 +1,16 @@
+@use "/src/styles/hero";
+
+.wrapper {
+	padding: 0 var(--mantine-spacing-md);
+
+	.hero {
+		@include hero.default;
+	}
+
+	.description {
+		font-family: monospace;
+		margin: 8rem 0;
+		text-align: center;
+		width: 100%;
+	}
+}

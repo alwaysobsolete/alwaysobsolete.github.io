@@ -27,15 +27,22 @@ export async function generateMetadata({
 	/*
 	 * Data
 	 */
+	const book = getBookOrThrow({ slug: bookSlug });
 	const {
-		metadata: { title },
+		metadata: { description, title },
 	} = await import(`@/content/books/${bookSlug}/index.mdx`);
 
 	/*
 	 * Make metadata
 	 */
 	return {
-		title: `${title}`,
+		description,
+		title,
+		openGraph: {
+			description,
+			title,
+			images: book.imgSrc ? [{ url: book.imgSrc }] : undefined,
+		},
 	};
 }
 

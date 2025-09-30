@@ -11,13 +11,28 @@ import "@/styles/markdown.scss";
 import styles from "./styles.module.scss";
 
 /*
+ * Constants
+ */
+const imgUrl = "/content/books/a-book-67049_1280.jpg";
+
+/*
  * SSR
  */
 export const dynamicParams = false;
 
 export async function generateMetadata(): Promise<Metadata> {
+	const title = "Books";
+	const description =
+		"Collections of articles about vintage, retro, and fantasy video game consoles.";
+
 	return {
-		title: "Books",
+		description,
+		title,
+		openGraph: {
+			description,
+			title,
+			images: { url: imgUrl },
+		},
 	};
 }
 
@@ -42,12 +57,7 @@ const BooksPage: FC = async () => {
 	return (
 		<div className={styles.wrapper}>
 			<div className={styles.hero}>
-				<Image
-					alt="A bookshelf"
-					fill
-					src="/content/books/a-book-67049_1280.jpg"
-					sizes="100vw"
-				/>
+				<Image alt="A bookshelf" fill src={imgUrl} sizes="100vw" />
 			</div>
 
 			<article>

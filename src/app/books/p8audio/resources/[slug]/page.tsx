@@ -28,16 +28,23 @@ export async function generateMetadata({
 	 * Data
 	 */
 	const {
-		metadata: { title },
+		metadata: { description, title: resourceTitle },
 	} = await import(`@/content/books/p8audio/resources/${slug}.mdx`);
 
 	const book = getBookOrThrow({ slug: "p8audio" });
+	const title = `${book.title}: ${resourceTitle}`;
 
 	/*
 	 * Make metadata
 	 */
 	return {
-		title: `${book.title}: ${title}`,
+		description,
+		title,
+		openGraph: {
+			description,
+			title,
+			images: book.imgSrc ? [{ url: book.imgSrc }] : undefined,
+		},
 	};
 }
 

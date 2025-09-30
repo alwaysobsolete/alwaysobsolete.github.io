@@ -31,16 +31,23 @@ export async function generateMetadata({
 	 * Data
 	 */
 	const {
-		metadata: { title },
+		metadata: { description, title: partTitle },
 	} = await import(`@/content/books/${bookSlug}/parts/${partSlug}/index.mdx`);
 
 	const book = getBookOrThrow({ slug: bookSlug });
+	const title = `${book.title}: ${partTitle}`;
 
 	/*
 	 * Make metadata
 	 */
 	return {
-		title: `${book.title}: ${title}`,
+		description,
+		title,
+		openGraph: {
+			description,
+			title,
+			images: book.imgSrc ? [{ url: book.imgSrc }] : undefined,
+		},
 	};
 }
 

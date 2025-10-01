@@ -43,6 +43,10 @@ h1, h2, h3, h4, h5, h6 {
 	font-family: monospace,
 }
 
+iframe {
+	max-width: 100%;
+}
+
 main {
 	flex: 1;
 }
@@ -53,6 +57,10 @@ ol, ul {
 
 ol.no-style, ul.no-style {
 	list-style-type: none;
+}
+
+video {
+	max-width: 100%;
 }
 
 .copyright {

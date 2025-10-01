@@ -1,5 +1,5 @@
 const env = {
-	DOMAIN: process.env.DOMAIN || "alwaysobsolete.github.io",
+	DOMAIN: process.env.DOMAIN || "alwaysobsolete.com",
 	HTTP_PROTOCOL: process.env.HTTP_PROTOCOL || "https",
 	URL: "",
 };

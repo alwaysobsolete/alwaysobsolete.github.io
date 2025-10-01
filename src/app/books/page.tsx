@@ -13,7 +13,7 @@ import styles from "./styles.module.scss";
 /*
  * Constants
  */
-const imgUrl = "/content/books/a-book-67049_1280.jpg";
+const imgUrl = "/content/books/parastoo-maleki-ORT8CtIFriE-unsplash.jpg";
 
 /*
  * SSR

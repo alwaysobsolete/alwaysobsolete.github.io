@@ -5,11 +5,16 @@
 	margin-bottom: var(--mantine-spacing-md);
 
 	a {
+		color: var(--mantine-color-dimmed);
 		line-height: 1rem;
 		text-decoration: none;
 
+		&:link {
+			color: var(--mantine-color-dimmed);
+		}
+
 		&:visited {
-			color: inherit;
+			color: var(--mantine-color-dimmed);
 		}
 
 		&:hover {

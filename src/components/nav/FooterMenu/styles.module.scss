@@ -7,11 +7,16 @@
 	padding: 0 var(--mantine-spacing-md);
 
 	a {
+		color: var(--mantine-color-dimmed);
 		font-family: monospace;
 		text-decoration: none;
 
+		&:link {
+			color: var(--mantine-color-dimmed);
+		}
+
 		&:visited {
-			color: inherit;
+			color: var(--mantine-color-dimmed);
 		}
 
 		&:hover {

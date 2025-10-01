@@ -12,8 +12,16 @@
 		padding: calc(var(--mantine-spacing-xs) / 2);
 		text-decoration: none;
 
+		&:link {
+			color: var(--mantine-text-color);
+		}
+
 		&:visited {
-			color: inherit;
+			color: var(--mantine-text-color);
+		}
+
+		&:hover {
+			color: var(--mantine-text-color);
 		}
 	}
 }

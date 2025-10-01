@@ -11,6 +11,7 @@ import MainMenu from "@/components/nav/MainMenu/MainMenu";
 
 import "@mantine/core/styles.css";
 import "@/styles/globals.scss";
+import env from "@/config/env";
 
 const description =
 	"A blog about vintage, retro, and fantasy video game consoles";
@@ -18,13 +19,18 @@ const title = "/always/obsolete";
 
 const metadata: Metadata = {
 	description,
-	metadataBase: new URL("http://alwaysobsolete.github.io"),
-	title,
+	metadataBase: new URL(env.URL),
 	openGraph: {
 		description,
 		title,
 		images: { url: "/tina-rataj-berard-0Q33pyk-AXI-unsplash.jpg" },
 	},
+	robots: {
+		index: true,
+		follow: true,
+		noarchive: true,
+	},
+	title,
 };
 
 /**

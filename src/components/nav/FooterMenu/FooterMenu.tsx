@@ -1,5 +1,7 @@
 import type { FC } from "react";
 import Link from "next/link";
+import { SocialIcon } from "react-social-icons/component";
+import "react-social-icons/itch.io";
 
 import styles from "./styles.module.scss";
 
@@ -7,9 +9,16 @@ const FooterMenu: FC = () => {
 	return (
 		<nav className={styles.wrapper}>
 			<div className={styles.branding}>
-				<span className={styles.logo}>
+				<div className={styles.logo}>
 					<Link href="/">/always/obsolete</Link>
-				</span>
+				</div>
+
+				<div className={styles.icons}>
+					<SocialIcon
+						style={{ height: "2rem", width: "2rem" }}
+						url="https://alwaysobsolete.itch.io"
+					/>
+				</div>
 			</div>
 
 			<div className={styles.section}>

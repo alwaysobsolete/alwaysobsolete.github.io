@@ -1,4 +1,10 @@
 .wrapper {
+	&:hover {
+		.section {
+			opacity: 100%;
+		}
+	}
+
 	h2 {
 		a {
 			color: var(--mantine-color-text);
@@ -13,6 +19,7 @@
 	.section {
 		aspect-ratio: 2/1;
 		margin-bottom: var(--mantine-spacing-sm);
+		opacity: 75%;
 		position: relative;
 
 		img {

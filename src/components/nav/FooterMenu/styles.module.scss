@@ -37,6 +37,16 @@
 
 		.icons {
 			margin-top: var(--mantine-spacing-sm);
+
+			:global .social-svg {
+				filter: saturate(0);
+				opacity: 35%;
+
+				&:hover {
+					filter: none;
+					opacity: 100%;
+				}
+			}
 		}
 	}
 

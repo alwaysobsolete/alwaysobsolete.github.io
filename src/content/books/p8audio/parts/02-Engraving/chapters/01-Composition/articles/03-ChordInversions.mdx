@@ -1,0 +1,134 @@
+export const metadata = {
+    title: "Chord Inversions",
+};
+
+In the homework section of *[Chord Progressions](../02-ChordProgressions)*, we suggested that you try recreating the chord progression of your favorite song in Pico-8. If you tried this and used the same chord structure as in the examples, `I`-`III`-`V`, then the resulting chords may not have sounded exactly like your favorite song. One possible explanation is that some of the chords are [inverted](https://en.wikipedia.org/wiki/Inversion_(music)#Chords), meaning the pitches are in a different order than `I`-`III`-`V`.
+
+## Root Position
+
+The `I`-`III`-`V` [triad](https://en.wikipedia.org/wiki/Triad_(music)) structure is an example of a "[root position](https://en.wikipedia.org/wiki/Root_position)" chord, meaning the root of the chord, `I`, is also the lowest pitch in the chord. In *[Voicings](../01-Voicings)*, we introduced the "[closed](https://en.wikipedia.org/wiki/Close_and_open_harmony)" triad chord structure, and then spread the pitches across different octaves, to create an "[open](https://en.wikipedia.org/wiki/Close_and_open_harmony)" chord. In both cases, these are root position chords, because the lowest pitch was always the `I`.
+
+|                                                      | I  | III | V  |
+|------------------------------------------------------|----|-----|----|
+| [C Major](https://en.wikipedia.org/wiki/C_major) | C2 | E2  | G2 |
+
+<video controls>
+<source src="/content/books/p8audio/02-01-03-c-major-triad.mp4" type="video/mp4" />
+<a href="/content/books/p8audio/02-01-03-c-major-triad.mp4">C Major triad</a>.
+</video>
+
+```
+[sfx]030100180a180a180a180a180a180a180a180a180a180a180a180a180a180a180a180a180a180a180a180a180a180a180a180a180a180a180a180a180a180a180a180a01100000081c0a1c0a1c0a1c0a1c0a1c0a1c0a1c0a1c0a1c0a1c0a1c0a1c0a1c0a1c0a1c0a1c0a1c0a1c0a1c0a1c0a1c0a1c0a1c0a1c0a1c0a1c0a1c0a1c0a1c0a1c0a1c0a01100000101f0a1f0a1f0a1f0a1f0a1f0a1f0a1f0a1f0a1f0a1f0a1f0a1f0a1f0a1f0a1f0a1f0a1f0a1f0a1f0a1f0a1f0a1f0a1f0a1f0a1f0a1f0a1f0a1f0a1f0a1f0a1f0a01100000000810440[/sfx]
+```
+
+## 1st Inversion
+
+A chord's [first inversion](https://en.wikipedia.org/wiki/First_inversion) can be arrived at by rearranging the chord so that the `III` becomes the lowest pitch. For our Major triad shape, that means moving to the `I` to the top, resulting in a structure of `III`-`V`-`I`. We can refer to this as a `I`/`III` chord, for example, the first inversion of a C Major triad would be written as "CM(ajor)/E".
+
+|                                                      | III | V  | I  |
+|------------------------------------------------------|-----|----|----|
+| [C Major / E](https://en.wikipedia.org/wiki/C_major) | E2  | G2 | C3 |
+
+<video controls>
+<source src="/content/books/p8audio/02-01-03-c-major-triad-1st-inversion.mp4" type="video/mp4" />
+<a href="/content/books/p8audio/02-01-03-c-major-triad-1st-inversion.mp4">C Major triad, 1st inversion</a>.
+</video>
+
+```
+[sfx]0301001c0a1c0a1c0a1c0a1c0a1c0a1c0a1c0a1c0a1c0a1c0a1c0a1c0a1c0a1c0a1c0a1c0a1c0a1c0a1c0a1c0a1c0a1c0a1c0a1c0a1c0a1c0a1c0a1c0a1c0a1c0a1c0a01100000081f0a1f0a1f0a1f0a1f0a1f0a1f0a1f0a1f0a1f0a1f0a1f0a1f0a1f0a1f0a1f0a1f0a1f0a1f0a1f0a1f0a1f0a1f0a1f0a1f0a1f0a1f0a1f0a1f0a1f0a1f0a1f0a0110000010240a240a240a240a240a240a240a240a240a240a240a240a240a240a240a240a240a240a240a240a240a240a240a240a240a240a240a240a240a240a240a240a01100000000810440[/sfx]
+```
+
+## 2nd Inversion
+
+A chord's [second inversion](https://en.wikipedia.org/wiki/Second_inversion) is when the chord is rearranged so that the `V` becomes the lowest pitch. We can refer to it as `I`/`V`, and for our C Major triad example, "CM(ajor)/G".
+
+|                                                      | V  | I  | III |
+|------------------------------------------------------|----|----|-----|
+| [C Major / G](https://en.wikipedia.org/wiki/C_major) | G1 | C2 |  E2 |
+
+<video controls>
+<source src="/content/books/p8audio/02-01-03-c-major-triad-2nd-inversion.mp4" type="video/mp4" />
+<a href="/content/books/p8audio/02-01-03-c-major-triad-2nd-inversion.mp4">C Major triad, 2nd inversion</a>.
+</video>
+
+```
+[sfx]030100130a130a130a130a130a130a130a130a130a130a130a130a130a130a130a130a130a130a130a130a130a130a130a130a130a130a130a130a130a130a130a130a0110000008180a180a180a180a180a180a180a180a180a180a180a180a180a180a180a180a180a180a180a180a180a180a180a180a180a180a180a180a180a180a180a180a01100000101c0a1c0a1c0a1c0a1c0a1c0a1c0a1c0a1c0a1c0a1c0a1c0a1c0a1c0a1c0a1c0a1c0a1c0a1c0a1c0a1c0a1c0a1c0a1c0a1c0a1c0a1c0a1c0a1c0a1c0a1c0a1c0a01100000000810440[/sfx]
+```
+
+## 3rd Inversion
+
+So far, we have only looked at triad chords, but chords can contain more than three notes. One example is the [seventh chord](https://en.wikipedia.org/wiki/Seventh_chord), which contains a triad, plus the [seventh](https://en.wikipedia.org/wiki/Interval_(music)) scale degree. This type of chord can be notated by appending a `7` to the end of a chord name, so `I7`, or for a C Major 7, "CM(ajor)7".
+
+In root position, the CM7 chord would sound like this:
+
+|                                                                | I  | III | V  | VII |
+|----------------------------------------------------|----|-----|----|-----|
+| [C Major 7](https://en.wikipedia.org/wiki/Major_seventh_chord) | C2 | E2  | G2 | B2  |
+
+<video controls>
+<source src="/content/books/p8audio/02-01-03-c-major-7.mp4" type="video/mp4" />
+<a href="/content/books/p8audio/02-01-03-c-major-7.mp4">C Major 7</a>.
+</video>
+
+```
+[sfx]040100180a180a180a180a180a180a180a180a180a180a180a180a180a180a180a180a180a180a180a180a180a180a180a180a180a180a180a180a180a180a180a180a01100000081c0a1c0a1c0a1c0a1c0a1c0a1c0a1c0a1c0a1c0a1c0a1c0a1c0a1c0a1c0a1c0a1c0a1c0a1c0a1c0a1c0a1c0a1c0a1c0a1c0a1c0a1c0a1c0a1c0a1c0a1c0a1c0a01100000101f0a1f0a1f0a1f0a1f0a1f0a1f0a1f0a1f0a1f0a1f0a1f0a1f0a1f0a1f0a1f0a1f0a1f0a1f0a1f0a1f0a1f0a1f0a1f0a1f0a1f0a1f0a1f0a1f0a1f0a1f0a1f0a0110000018230a230a230a230a230a230a230a230a230a230a230a230a230a230a230a230a230a230a230a230a230a230a230a230a230a230a230a230a230a230a230a230a01100000000810180[/sfx]
+```
+
+Since we now have four pitches, we can achieve a [third inversion](https://en.wikipedia.org/wiki/Third_inversion) ordering, by moving the 7th to the lowest pitch, and stacking the remaining triad notes on top. Naturally, we can notate this by writing it as `I`/`VII`, so for a C Major 7 chord, "CM(ajor)/B".
+
+|                                                                    | VII | I  | III | V  |
+|--------------------------------------------------------------------|-----|----|-----|----|
+| [C Major / B](https://en.wikipedia.org/wiki/Major_seventh_chord) | B1  | C2 | E2  | G2 |
+
+<video controls>
+<source src="/content/books/p8audio/02-01-03-c-major-7-3rd-inversion.mp4" type="video/mp4" />
+<a href="/content/books/p8audio/02-01-03-c-major-7-3rd-inversion.mp4">C Major 7, 3rd inversion</a>.
+</video>
+
+```
+[sfx]040100170a170a170a170a170a170a170a170a170a170a170a170a170a170a170a170a170a170a170a170a170a170a170a170a170a170a170a170a170a170a170a170a0110000008180a180a180a180a180a180a180a180a180a180a180a180a180a180a180a180a180a180a180a180a180a180a180a180a180a180a180a180a180a180a180a180a01100000101c0a1c0a1c0a1c0a1c0a1c0a1c0a1c0a1c0a1c0a1c0a1c0a1c0a1c0a1c0a1c0a1c0a1c0a1c0a1c0a1c0a1c0a1c0a1c0a1c0a1c0a1c0a1c0a1c0a1c0a1c0a1c0a01100000181f0a1f0a1f0a1f0a1f0a1f0a1f0a1f0a1f0a1f0a1f0a1f0a1f0a1f0a1f0a1f0a1f0a1f0a1f0a1f0a1f0a1f0a1f0a1f0a1f0a1f0a1f0a1f0a1f0a1f0a1f0a1f0a01100000000810180[/sfx]
+```
+
+## Closed Harmony
+
+Let's revisit the Axis progression we created in *[Chord Progressions](../02-ChordProgressions)*.
+
+|                                                     | I  | III | V  |
+|-----------------------------------------------------|----|-----|----|
+| I  [C Major](https://en.wikipedia.org/wiki/C_major) | C2 | E2  | G2 |
+| V  [G Major](https://en.wikipedia.org/wiki/G_major) | G2 | B2  | D3 |
+| vi [A minor](https://en.wikipedia.org/wiki/A_minor) | A2 | C3  | E3 |
+| IV [F Major](https://en.wikipedia.org/wiki/F_major) | F2 | A2  | C3 |
+
+<video controls>
+<source src="/content/books/p8audio/02-01-02-axis.mp4" type="video/mp4" />
+<a href="/content/books/p8audio/02-01-02-axis.mp4">Axis Progression</a>.
+</video>
+
+```
+[sfx]030100180a180a180a180a180a180a180a180a1f0a1f0a1f0a1f0a1f0a1f0a1f0a1f0a210a210a210a210a210a210a210a210a1d0a1d0a1d0a1d0a1d0a1d0a1d0a1d0a01100000081c0a1c0a1c0a1c0a1c0a1c0a1c0a1c0a230a230a230a230a230a230a230a230a240a240a240a240a240a240a240a240a210a210a210a210a210a210a210a210a01100000101f0a1f0a1f0a1f0a1f0a1f0a1f0a1f0a260a260a260a260a260a260a260a260a280a280a280a280a280a280a280a280a240a240a240a240a240a240a240a240a01100000000810540[/sfx]
+```
+
+Because the example uses root position triads throughout, we end up with a range of pitches from `C-2` - `E3`, covering 16 semitones. Now that we know about chord inversions, we can use that knowledge to create a more closed-sounding harmony, which should give us a more "intimate" feeling, as the range of pitches will be smaller.
+
+|                                                             | x  | x  | x  |
+|-------------------------------------------------------------|----|----|----|
+| I  [C Major / E](https://en.wikipedia.org/wiki/C_major)     | C2 | E2 | G2 |
+| V  [G Major / B](https://en.wikipedia.org/wiki/G_major)     | B1 | D2 | G2 |
+| vi [A minor / C](https://en.wikipedia.org/wiki/A_minor)     | C2 | E2 | A2 |
+| IV [F Major / A](https://en.wikipedia.org/wiki/F_major)     | C2 | F2 | A2 |
+
+<video controls>
+<source src="/content/books/p8audio/02-01-03-axis-inversions.mp4" type="video/mp4" />
+<a href="/content/books/p8audio/02-01-03-axis-inversions.mp4">Axis Progression with inversions</a>.
+</video>
+
+```
+[sfx]030100180a180a180a180a180a180a180a180a170a170a170a170a170a170a170a170a180a180a180a180a180a180a180a180a180a180a180a180a180a180a180a180a01100000081c0a1c0a1c0a1c0a1c0a1c0a1c0a1c0a1a0a1a0a1a0a1a0a1a0a1a0a1a0a1a0a1c0a1c0a1c0a1c0a1c0a1c0a1c0a1c0a1d0a1d0a1d0a1d0a1d0a1d0a1d0a1d0a01100000101f0a1f0a1f0a1f0a1f0a1f0a1f0a1f0a1f0a1f0a1f0a1f0a1f0a1f0a1f0a1f0a210a210a210a210a210a210a210a210a210a210a210a210a210a210a210a210a01100000000810540[/sfx]
+```
+
+The revised version's pitches range from `B1` - `A2`. The result should be less shocking to hear than the root position version, because we've cut the range of pitches in half; from a difference of 16 semitones, down to only 8. While we have previously thought about "open" and "closed" harmony in terms of spreading the notes of a chord across different octaves, we can now see that the concept applies to music as a whole.
+
+## Homework
+
+Revisit your favorite song and listen carefully to the chords in the song, particularly the pitch of any bass instruments. Try to identity the use of any inverted chords, and adjust your Pico-8 recreation to match. Research other chord structures besides `I7`, and familiarize yourself with how they sound. Identify any remaining chord structures that may be missing from your Pico-8 recreation, and add them as necessary.

@@ -1,10 +1,12 @@
-const env = {
-	DOMAIN: process.env.DOMAIN || "alwaysobsolete.com",
-	HTTP_PROTOCOL: process.env.HTTP_PROTOCOL || "https",
-	URL: "",
-};
+const { NEXT_PUBLIC_DOMAIN, NEXT_PUBLIC_HTTP_PROTOCOL, NEXT_PUBLIC_PORT } =
+	process.env;
 
-env.URL = `${env.HTTP_PROTOCOL}://${env.DOMAIN}`;
+const env = {
+	NEXT_PUBLIC_DOMAIN,
+	NEXT_PUBLIC_HTTP_PROTOCOL,
+	NEXT_PUBLIC_PORT,
+	URL: `${NEXT_PUBLIC_HTTP_PROTOCOL}://${NEXT_PUBLIC_DOMAIN}${Number(NEXT_PUBLIC_PORT) === 80 || Number(NEXT_PUBLIC_PORT) === 443 ? "" : `:${NEXT_PUBLIC_PORT}`}`,
+};
 
 /*
  * Safety check

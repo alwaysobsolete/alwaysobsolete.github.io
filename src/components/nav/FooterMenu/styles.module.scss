@@ -35,8 +35,13 @@
 			font-weight: bolder;
 		}
 
-		.icons {
+		ul.icons {
+			display: flex;
+			gap: var(--mantine-spacing-xs);
+			flex-wrap: wrap;
+			list-style-type: none;
 			margin-top: var(--mantine-spacing-sm);
+			padding-left: 0;
 
 			:global .social-svg {
 				filter: saturate(0);

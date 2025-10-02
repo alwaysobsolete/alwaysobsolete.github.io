@@ -38,7 +38,7 @@ const MainMenu: FC = () => {
 				/>
 			</nav>
 
-			<Drawer onClose={close} opened={opened}>
+			<Drawer onClose={close} opened={opened} position="right">
 				<div className={styles.drawerWrapper}>
 					<NavLink
 						component={Link}

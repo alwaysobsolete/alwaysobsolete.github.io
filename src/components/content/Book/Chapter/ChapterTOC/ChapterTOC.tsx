@@ -9,15 +9,9 @@ import styles from "./styles.module.scss";
  * Chapter Table of Contents
  */
 const ChapterTOC: FC<{
-	baseURL: string;
 	chapter: Chapter;
 	showTitle?: boolean;
-}> = ({ baseURL, chapter, showTitle = true }) => {
-	/*
-	 * Constants
-	 */
-	const chapterUrl = `${baseURL}/${chapter.slug}`;
-
+}> = ({ chapter, showTitle = true }) => {
 	/*
 	 * React element
 	 */
@@ -26,7 +20,7 @@ const ChapterTOC: FC<{
 			{showTitle && (
 				<h3>
 					{chapter.articles.length > 0 ? (
-						<Link href={chapterUrl}>{chapter.title}</Link>
+						<Link href={chapter.url}>{chapter.title}</Link>
 					) : (
 						chapter.title
 					)}
@@ -35,7 +29,7 @@ const ChapterTOC: FC<{
 			<ol className="no-style">
 				{chapter.articles.map((article) => (
 					<li className={styles.articleItem} key={article.slug}>
-						<Link href={`${chapterUrl}/${article.slug}`}>{article.title}</Link>
+						<Link href={`${chapter.url}/${article.slug}`}>{article.title}</Link>
 					</li>
 				))}
 			</ol>

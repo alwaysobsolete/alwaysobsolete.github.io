@@ -133,11 +133,7 @@ const BookChapterPage: FC<
 
 				<Markdown />
 
-				<ChapterTOC
-					baseURL={`/books/${bookSlug}/${partSlug}`}
-					chapter={chapter}
-					showTitle={false}
-				/>
+				<ChapterTOC chapter={chapter} showTitle={false} />
 			</article>
 
 			<Siblings next={next} prev={prev} />

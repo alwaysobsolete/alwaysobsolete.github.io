@@ -117,7 +117,7 @@ const BookPartPage: FC<PageProps<"/books/[bookSlug]/[partSlug]">> = async ({
 
 				<Markdown />
 
-				<PartTOC baseURL={`/books/${bookSlug}`} part={part} showTitle={false} />
+				<PartTOC part={part} showTitle={false} />
 			</article>
 
 			<Siblings next={next} prev={prev} />

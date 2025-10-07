@@ -14,12 +14,14 @@ function sitemap(): MetadataRoute.Sitemap {
 			lastModified: new Date(),
 			changeFrequency: "yearly",
 			priority: 1,
+			images: ["/tina-rataj-berard-0Q33pyk-AXI-unsplash.jpg"],
 		},
 		{
 			url: `${env.URL}/books`,
 			lastModified: new Date(),
 			changeFrequency: "monthly",
 			priority: 0.5,
+			images: ["/content/books/parastoo-maleki-ORT8CtIFriE-unsplash.jpg"],
 		},
 	];
 }

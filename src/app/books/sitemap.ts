@@ -13,6 +13,7 @@ function sitemap(): MetadataRoute.Sitemap {
 
 	return books.map((book) => ({
 		url: `${url}/${book.slug}`,
+		images: [`${book.imgSrc}`],
 	}));
 }
 

@@ -22,13 +22,14 @@ const BookCard: FC<{
 	 */
 	return (
 		<Card className={styles.wrapper}>
-			<Card.Section className={styles.section}>
-				{book.imgSrc && (
-					<Link href={url}>
+			{book.imgSrc && (
+				<Link href={url}>
+					<Card.Section className={styles.section}>
 						<Image alt={`Cover art for ${book.title}`} fill src={book.imgSrc} />
-					</Link>
-				)}
-			</Card.Section>
+					</Card.Section>
+				</Link>
+			)}
+
 			<h2>
 				<Link href={url}>{book.title}</Link>
 			</h2>

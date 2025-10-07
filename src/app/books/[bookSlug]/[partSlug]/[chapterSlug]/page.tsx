@@ -30,13 +30,11 @@ export async function generateMetadata({
 	/*
 	 * Data
 	 */
-	const {
-		metadata: { description, title: chapterTitle },
-	} = await import(
-		`@/content/books/${bookSlug}/parts/${partSlug}/chapters/${chapterSlug}/index.mdx`
-	);
-
 	const book = getBookOrThrow({ slug: bookSlug });
+	const part = book.getPartOrThrow(partSlug);
+	const { description, title: chapterTitle } =
+		part.getChapterOrThrow(chapterSlug);
+
 	const title = `${book.title}: ${chapterTitle}`;
 
 	/*
@@ -85,26 +83,20 @@ const BookChapterPage: FC<
 	/*
 	 * Data
 	 */
-	// Get Chapter markdown and metadata
-	const {
-		default: Markdown,
-		metadata: { title },
-	} = await import(
-		`@/content/books/${bookSlug}/parts/${partSlug}/chapters/${chapterSlug}/index.mdx`
-	);
-
 	// Get Book objects
 	const book = getBookOrThrow({ slug: bookSlug });
 	const part = book.getPartOrThrow(partSlug);
 	const chapter = part.getChapterOrThrow(chapterSlug);
 
+	// Get Chapter markdown and metadata
+	const { default: Markdown } = await import(
+		`@/content/books/${bookSlug}/parts/${partSlug}/chapters/${chapterSlug}/index.mdx`
+	);
+
 	/*
 	 * Constants
 	 */
 	// Get breadcrumbs
-	const bookUrl = `/books/${bookSlug}`;
-	const partUrl = `${bookUrl}/${partSlug}`;
-
 	const crumbs = [
 		{
 			title: "Books",
@@ -112,11 +104,11 @@ const BookChapterPage: FC<
 		},
 		{
 			title: book.title,
-			href: bookUrl,
+			href: book.url,
 		},
 		{
 			title: part.title,
-			href: partUrl,
+			href: part.url,
 		},
 	];
 
@@ -137,7 +129,7 @@ const BookChapterPage: FC<
 			<Breadcrumbs crumbs={crumbs} />
 
 			<article className="markdown-body">
-				<h1>{title}</h1>
+				<h1>{chapter.title}</h1>
 
 				<Markdown />
 

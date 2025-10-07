@@ -28,10 +28,7 @@ export async function generateMetadata({
 	/*
 	 * Data
 	 */
-	const book = getBookOrThrow({ slug: bookSlug });
-	const {
-		metadata: { description, title },
-	} = await import(`@/content/books/${bookSlug}/index.mdx`);
+	const { description, imgSrc, title } = getBookOrThrow({ slug: bookSlug });
 
 	/*
 	 * Make metadata
@@ -42,7 +39,7 @@ export async function generateMetadata({
 		openGraph: {
 			description,
 			title,
-			images: book.imgSrc ? [{ url: book.imgSrc }] : undefined,
+			images: imgSrc ? [{ url: imgSrc }] : undefined,
 		},
 	};
 }
@@ -69,11 +66,13 @@ const BookPage: FC<PageProps<"/books/[bookSlug]">> = async ({ params }) => {
 	/*
 	 * Data
 	 */
+	// Get Book object
+	const book = getBookOrThrow({ slug: bookSlug });
+
 	// Get Article markdown and metadata
-	const {
-		default: Markdown,
-		metadata: { imgSrc, title },
-	} = await import(`@/content/books/${bookSlug}/index.mdx`);
+	const { default: Markdown } = await import(
+		`@/content/books/${bookSlug}/index.mdx`
+	);
 
 	let Appendix;
 
@@ -81,9 +80,6 @@ const BookPage: FC<PageProps<"/books/[bookSlug]">> = async ({ params }) => {
 		Appendix = (await import(`@/content/books/${bookSlug}/appendix.mdx`))
 			.default;
 	} catch {}
-
-	// Get Book object
-	const book = getBookOrThrow({ slug: bookSlug });
 
 	/*
 	 * Constants
@@ -100,14 +96,16 @@ const BookPage: FC<PageProps<"/books/[bookSlug]">> = async ({ params }) => {
 	 */
 	return (
 		<div className={styles.wrapper}>
-			<div className={styles.hero}>
-				<Image alt={`Cover art for ${book.title}`} fill src={imgSrc} />
-			</div>
+			{book.imgSrc && (
+				<div className={styles.hero}>
+					<Image alt={`Cover art for ${book.title}`} fill src={book.imgSrc} />
+				</div>
+			)}
 
 			<Breadcrumbs crumbs={crumbs} />
 
 			<article className="markdown-body">
-				<h1>{title}</h1>
+				<h1>{book.title}</h1>
 
 				<Markdown />
 

@@ -6,12 +6,14 @@ import evalMetadata from "@/lib/mdx/evalMetadata";
 import Article from "@/models/Book/Article";
 
 interface ChapterMetadata {
+	description?: string;
 	title: string;
 }
 
 class Chapter {
 	// Properties
 	public articles: Article[];
+	public description?: string;
 	public partSlug: string;
 	public slug: string;
 	public title: string;
@@ -24,6 +26,7 @@ class Chapter {
 	 */
 	private constructor(chapter: ClassProps<Chapter>) {
 		this.articles = chapter.articles;
+		this.description = chapter.description;
 		this.partSlug = chapter.partSlug;
 		this.slug = chapter.slug;
 		this.title = chapter.title;
@@ -44,7 +47,7 @@ class Chapter {
 		 * Parse data dir
 		 */
 		const mdxPath = path.join(chapterPath, "index.mdx");
-		const { title } = await evalMetadata<ChapterMetadata>(mdxPath);
+		const { description, title } = await evalMetadata<ChapterMetadata>(mdxPath);
 
 		// Metadata assertions
 		if (!title) {
@@ -74,6 +77,7 @@ class Chapter {
 
 		return new Chapter({
 			articles,
+			description,
 			partSlug,
 			slug,
 			title,

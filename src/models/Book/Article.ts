@@ -3,12 +3,14 @@ import path from "path";
 import evalMetadata from "@/lib/mdx/evalMetadata";
 
 interface ArticleMetadata {
+	description?: string;
 	title: string;
 }
 
 class Article {
 	// Properties
 	public chapterSlug: string;
+	public description?: string;
 	public slug: string;
 	public title: string;
 	public url: string;
@@ -31,28 +33,29 @@ class Article {
 	 * @returns {Article}
 	 */
 	public static async init(
-		articlePath: string,
+		mdxPath: string,
 		chapterSlug: string,
 		chapterUrl: string,
 	): Promise<Article> {
 		/*
 		 * Parse data dir
 		 */
-		const { title } = await evalMetadata<ArticleMetadata>(articlePath);
+		const { description, title } = await evalMetadata<ArticleMetadata>(mdxPath);
 
 		// Metadata assertions
 		if (!title) {
-			throw new Error(`${articlePath} metadata.title is undefined`);
+			throw new Error(`${mdxPath} metadata.title is undefined`);
 		}
 
 		/*
 		 * Make Article
 		 */
-		const slug = path.basename(articlePath, path.extname(articlePath));
+		const slug = path.basename(mdxPath, path.extname(mdxPath));
 		const url = `${chapterUrl}/${slug}`;
 
 		return new Article({
 			chapterSlug,
+			description,
 			slug,
 			title,
 			url,

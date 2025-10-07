@@ -29,6 +29,7 @@
 	}
 
 	.branding {
+		height: var(--mantine-line-height);
 		margin-top: 0;
 
 		.logo {
@@ -56,7 +57,7 @@
 	}
 
 	.section {
-		margin-top: 2rem;
+		margin-top: 2.3rem;;
 
 		ul {
 			list-style-type: none;

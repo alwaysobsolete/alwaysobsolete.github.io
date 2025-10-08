@@ -3,15 +3,22 @@ import type { FC, PropsWithChildren } from "react";
 import type { FigureProps } from "@/components/figure/Figure/Figure";
 import Figure from "@/components/figure/Figure/Figure";
 
-const ImageFigure: FC<
-	FigureProps<{
-		alt: string;
-		height?: string | number;
-		href: string;
-		src: string;
-		width?: string | number;
-	}>
-> = ({ alt, caption, height, href, src, width }) => {
+type ImageFigureProps = FigureProps<{
+	alt: string;
+	height?: string | number;
+	href: string;
+	src: string;
+	width?: string | number;
+}>;
+
+const ImageFigure: FC<ImageFigureProps> = ({
+	alt,
+	caption,
+	height,
+	href,
+	src,
+	width,
+}) => {
 	/**
 	 * Link Wrapper component
 	 */
@@ -31,4 +38,5 @@ const ImageFigure: FC<
 	);
 };
 
+export type { ImageFigureProps };
 export default ImageFigure;

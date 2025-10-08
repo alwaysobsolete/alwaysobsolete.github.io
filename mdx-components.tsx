@@ -1,6 +1,7 @@
 import type { MDXComponents } from "mdx/types";
 
 import ImageFigure from "@/components/figure/ImageFigure/ImageFigure";
+import P8CartFigure from "@/components/figure/P8CartFigure/P8CartFigure";
 import VideoFigure from "@/components/figure/VideoFigure/VideoFigure";
 import Video from "@/components/video/Video/Video";
 
@@ -11,6 +12,7 @@ import Video from "@/components/video/Video/Video";
 
 const components: MDXComponents = {
 	ImageFigure,
+	P8CartFigure,
 	Video,
 	VideoFigure,
 };

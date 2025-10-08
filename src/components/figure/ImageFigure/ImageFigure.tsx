@@ -8,6 +8,7 @@ type ImageFigureProps = FigureProps<{
 	height?: string | number;
 	href: string;
 	src: string;
+	title?: string;
 	width?: string | number;
 }>;
 
@@ -17,6 +18,7 @@ const ImageFigure: FC<ImageFigureProps> = ({
 	height,
 	href,
 	src,
+	title,
 	width,
 }) => {
 	/**
@@ -32,7 +34,7 @@ const ImageFigure: FC<ImageFigureProps> = ({
 		<Figure caption={caption}>
 			<LinkWrapper>
 				{/* eslint-disable-next-line @next/next/no-img-element */}
-				<img alt={alt} height={height} src={src} width={width} />
+				<img alt={alt} height={height} src={src} title={title} width={width} />
 			</LinkWrapper>
 		</Figure>
 	);

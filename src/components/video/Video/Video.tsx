@@ -1,12 +1,14 @@
 import type { FC } from "react";
 
-const Video: FC<{
+interface VideoProps {
 	alt: string;
 	height?: string | number;
 	src: string;
 	type?: string;
 	width?: string | number;
-}> = ({ alt, height, src, type, width }) => {
+}
+
+const Video: FC<VideoProps> = ({ alt, height, src, type, width }) => {
 	/*
 	 * React element
 	 */
@@ -18,4 +20,5 @@ const Video: FC<{
 	);
 };
 
+export type { VideoProps };
 export default Video;

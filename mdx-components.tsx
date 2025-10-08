@@ -1,5 +1,7 @@
 import type { MDXComponents } from "mdx/types";
 
+import ImageFigure from "@/components/figure/ImageFigure/ImageFigure";
+import VideoFigure from "@/components/figure/VideoFigure/VideoFigure";
 import Video from "@/components/video/Video/Video";
 
 // This file allows you to provide custom React components
@@ -8,7 +10,9 @@ import Video from "@/components/video/Video/Video";
 // components from other libraries, and more.
 
 const components: MDXComponents = {
+	ImageFigure,
 	Video,
+	VideoFigure,
 };
 
 /**

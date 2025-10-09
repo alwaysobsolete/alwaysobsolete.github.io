@@ -1,5 +1,32 @@
 .markdown-body {
 	background-color: inherit;
+	color: inherit;
+	color-scheme: inherit;
+	font-family: Georgia, serif;
+	margin: 0 auto;
+	font-size: 1rem;
+
+	@media (min-width: mantine.$mantine-breakpoint-xs) {
+		font-size: 1.0625rem;
+		max-width: 64ch;
+	}
+
+	@media (min-width: mantine.$mantine-breakpoint-sm) {
+		font-size: 1.125rem;
+	}
+
+	@media (min-width: mantine.$mantine-breakpoint-md) {
+		font-size: 1.25rem;
+	}
+
+	h1:not(:first-child, h1:first-child + h1),
+	h2:not(:first-child, h1:first-child + h2),
+	h3:not(:first-child, h1:first-child + h3),
+	h4:not(:first-child, h1:first-child + h4),
+	h5:not(:first-child, h1:first-child + h5),
+	h6:not(:first-child, h1:first-child + h6) {
+		margin-top: 6rem;
+	}
 
 	pre > code {
 		white-space: pre-wrap;

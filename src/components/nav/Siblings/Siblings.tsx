@@ -22,6 +22,7 @@ const Siblings: FC<{ next?: Sibling; prev?: Sibling }> = ({ next, prev }) => {
 		<nav className={styles.wrapper}>
 			<Link href={prev?.url || "#"}>
 				<Button
+					color="teal"
 					disabled={!prev}
 					leftSection={<KeyboardDoubleArrowLeft width={24} height={24} />}
 					type="button"
@@ -33,6 +34,7 @@ const Siblings: FC<{ next?: Sibling; prev?: Sibling }> = ({ next, prev }) => {
 
 			<Link href={next?.url || "#"}>
 				<Button
+					color="teal"
 					disabled={!next}
 					rightSection={<KeyboardDoubleArrowRight height={24} width={24} />}
 					type="button"

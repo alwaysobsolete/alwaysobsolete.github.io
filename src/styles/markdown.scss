@@ -1,6 +1,11 @@
 .markdown-body {
 	background-color: inherit;
 
+	pre > code {
+		white-space: pre-wrap;
+		word-break: break-all;
+	}
+
 	.anchor-heading {
 		color: inherit;
 

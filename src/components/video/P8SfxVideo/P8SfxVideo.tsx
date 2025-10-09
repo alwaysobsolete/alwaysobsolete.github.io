@@ -13,15 +13,14 @@ import Video from "@/components/video/Video/Video";
 import CartImg from "./cart32.png";
 import styles from "./styles.module.scss";
 
-const P8SfxVideo: FC<VideoProps & { cart?: string; sfx: string }> = ({
-	alt,
-	cart,
-	height,
-	sfx,
-	src,
-	type,
-	width,
-}) => {
+const P8SfxVideo: FC<
+	VideoProps & {
+		cart?: string;
+		marginBottom?: string | number | true;
+		marginTop?: string | number | true;
+		sfx: string;
+	}
+> = ({ alt, cart, height, marginBottom, marginTop, sfx, src, type, width }) => {
 	/*
 	 * Constants
 	 */
@@ -36,7 +35,13 @@ const P8SfxVideo: FC<VideoProps & { cart?: string; sfx: string }> = ({
 	 * React element
 	 */
 	return (
-		<div className={styles.wrapper}>
+		<div
+			className={styles.wrapper}
+			style={{
+				marginBottom: marginBottom === true ? "6rem" : marginBottom,
+				marginTop: marginTop === true ? "6rem" : marginTop,
+			}}
+		>
 			<Video alt={alt} height={height} src={src} type={type} width={width} />
 
 			<div className={styles.meta}>

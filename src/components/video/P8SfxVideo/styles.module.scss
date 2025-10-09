@@ -1,0 +1,79 @@
+.wrapper {
+	background-color: #222222;
+	color: #666666;
+	display: flex;
+	flex-direction: column;
+	font-family: monospace;
+	font-size: 0.66rem;
+	margin-bottom: 1rem;
+	max-width: 36rem;
+
+	pre {
+		background-color: #224;
+		color: #c2c3c7;
+		margin-bottom: 0;
+	}
+
+	.meta {
+		align-content: center;
+		display: flex;
+		padding: 0.25rem 0.5rem;
+
+		a.cart {
+			align-content: center;
+			color: white;
+			display: flex;
+			margin-right: 0.66rem;
+
+			&:hover {
+				text-decoration: none;
+			}
+
+			img {
+				height: 1rem;
+				margin-right: 0.25rem;
+			}
+		}
+
+		.cartName {
+			text-wrap: nowrap;
+			overflow-x: hidden;
+		}
+
+		.codeBtn {
+			background-color: inherit;
+			border: none;
+			color: inherit;
+			text-wrap: nowrap;
+
+			&:hover {
+				background-color: inherit;
+				color: white;
+				cursor: pointer;
+			}
+		}
+
+		.separator {
+			margin: 0 0.66rem;
+		}
+	}
+
+	.sfxWrapper {
+		position: relative;
+
+		.helpBtn {
+			height: 2rem;
+			padding: 0;
+			position: absolute;
+			right: 2rem;
+			top:0;
+			width: 2rem;
+			z-index: 1;
+		}
+	}
+}
+
+.popOver {
+	font-family: monospace;
+	font-size: 0.66rem;
+}

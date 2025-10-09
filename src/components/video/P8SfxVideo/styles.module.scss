@@ -24,6 +24,8 @@
 			color: white;
 			display: flex;
 			margin-right: 0.66rem;
+			min-width: calc(13px + 0.25rem + 4ch);
+			white-space: nowrap;
 
 			&:hover {
 				text-decoration: none;
@@ -36,15 +38,16 @@
 		}
 
 		.cartName {
-			text-wrap: nowrap;
 			overflow-x: hidden;
+			white-space: nowrap;
 		}
 
 		.codeBtn {
 			background-color: inherit;
 			border: none;
 			color: inherit;
-			text-wrap: nowrap;
+			min-width: 6ch;
+			white-space: nowrap;
 
 			&:hover {
 				background-color: inherit;

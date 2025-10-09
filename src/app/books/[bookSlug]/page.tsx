@@ -96,13 +96,13 @@ const BookPage: FC<PageProps<"/books/[bookSlug]">> = async ({ params }) => {
 	 */
 	return (
 		<div className={styles.wrapper}>
+			<Breadcrumbs crumbs={crumbs} />
+
 			{book.imgSrc && (
 				<div className={styles.hero}>
 					<Image alt={`Cover art for ${book.title}`} fill src={book.imgSrc} />
 				</div>
 			)}
-
-			<Breadcrumbs crumbs={crumbs} />
 
 			<article className="markdown-body">
 				<h1>{book.title}</h1>

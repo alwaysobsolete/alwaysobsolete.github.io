@@ -1,3 +1,5 @@
+@use "/src/styles/mixins";
+
 .markdown-body {
 	background-color: inherit;
 	color: inherit;
@@ -17,6 +19,10 @@
 
 	@media (min-width: mantine.$mantine-breakpoint-md) {
 		font-size: 1.25rem;
+	}
+
+	a {
+		@include mixins.a;
 	}
 
 	h1:not(:first-child, h1:first-child + h1),

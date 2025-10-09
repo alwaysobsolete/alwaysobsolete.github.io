@@ -1,3 +1,5 @@
+@use "/src/styles/mixins";
+
 :root {
 	--background: #ffffff;
 	--foreground: #171717;
@@ -7,6 +9,10 @@
 	:root {
 		--background: #01141e;
 		--foreground: #ededed;
+	}
+
+	html {
+		color-scheme: dark;
 	}
 }
 
@@ -21,7 +27,7 @@ body {
 	color: var(--foreground);
 	display: flex;
 	flex-direction: column;
-	font-family: Arial, Helvetica, sans-serif;
+	font-family: Georgia, serif;
 	-webkit-font-smoothing: antialiased;
 	-moz-osx-font-smoothing: grayscale;
 	min-height: 100vh;
@@ -31,6 +37,10 @@ body {
 	box-sizing: border-box;
 	padding: 0;
 	margin: 0;
+}
+
+a {
+	@include mixins.a;
 }
 
 button {
@@ -76,10 +86,4 @@ video {
 	display: flex;
 	flex-wrap: wrap;
 	gap: var(--mantine-spacing-md);
-}
-
-@media (prefers-color-scheme: dark) {
-	html {
-		color-scheme: dark;
-	}
 }

@@ -4,6 +4,23 @@ This is a [Next.js](https://nextjs.org) project bootstrapped with [`create-next-
 
 ## Installation
 
+### Git LFS
+
+This project uses [Git LFS](https://git-lfs.com/). [Install it](https://github.com/git-lfs/git-lfs?utm_source=gitlfs_site&utm_medium=installation_link&utm_campaign=gitlfs#installing) before cloning this repo.
+
+Ensure Git LFS is installed:
+
+```shell
+git lfs install
+```
+
+Clone repo and fetch LFS refs:
+
+```
+git clone git@github.com:alwaysobsolete/alwaysobsolete.github.io &&\
+git lfs fetch
+```
+
 ### .env
 
 Copy [.env.local.example](/.env.local.example) to `.env.local`:

@@ -1,4 +1,6 @@
 .wrapper {
+	--bc-separator-margin: 1ch;
+
 	color: var(--mantine-color-dimmed);
 	font-family: monospace;
 	font-size: 0.75rem;
@@ -20,5 +22,13 @@
 		&:hover {
 			color: var(--mantine-color-text);
 		}
+	}
+
+	:global .mantine-Breadcrumbs-separator:first-child {
+		margin-left: 0;
+	}
+
+	:global .mantine-Breadcrumbs-separator:last-child {
+		margin-right: 0;
 	}
 }

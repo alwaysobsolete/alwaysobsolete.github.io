@@ -109,7 +109,7 @@ const BookPage: FC<PageProps<"/books/[bookSlug]">> = async ({ params }) => {
 
 				<Markdown />
 
-				<BookTOC book={book} />
+				<BookTOC book={book} marginTop />
 
 				{Appendix && <Appendix />}
 			</article>

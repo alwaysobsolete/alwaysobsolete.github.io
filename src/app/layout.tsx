@@ -40,11 +40,11 @@ const RootLayout: FC<PropsWithChildren> = ({ children }) => {
 	return (
 		<html lang="en" {...mantineHtmlProps}>
 			<head>
-				<ColorSchemeScript />
+				<ColorSchemeScript defaultColorScheme="auto" />
 			</head>
 
 			<body>
-				<MantineProvider defaultColorScheme="dark">
+				<MantineProvider defaultColorScheme="auto">
 					<header>
 						<MainMenu />
 					</header>

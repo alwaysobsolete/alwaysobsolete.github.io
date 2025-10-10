@@ -1,19 +1,13 @@
 @use "/src/styles/mixins";
 
-:root {
-	--background: #ffffff;
-	--foreground: #171717;
+:root[data-mantine-color-scheme="light"] {
+	--mantine-color-body: #ffffff;
+	--mantine-color-text: #171717;
 }
 
-@media (prefers-color-scheme: dark) {
-	:root {
-		--background: #01141e;
-		--foreground: #ededed;
-	}
-
-	html {
-		color-scheme: dark;
-	}
+:root[data-mantine-color-scheme="dark"] {
+	--mantine-color-body: #01141e;
+	--mantine-color-text: #ededed;
 }
 
 html,
@@ -22,8 +16,8 @@ body {
 }
 
 body {
-	background: var(--background);
-	color: var(--foreground);
+	background: var(--mantine-color-body);
+	color: var(--mantine-color-text);
 	display: flex;
 	flex-direction: column;
 	font-family: Georgia, serif;

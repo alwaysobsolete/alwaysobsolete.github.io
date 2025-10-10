@@ -1,4 +1,10 @@
+@use "sass:selector";
+
 .wrapper {
+	@at-root [data-mantine-color-scheme="light"] & {
+		background-color: var(--mantine-color-gray-3);
+	}
+
 	&:hover {
 		.section {
 			opacity: 100%;
@@ -27,3 +33,4 @@
 		}
 	}
 }
+

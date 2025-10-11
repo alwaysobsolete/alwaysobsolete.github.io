@@ -20,7 +20,23 @@ const P8SfxVideo: FC<
 		marginTop?: string | number | true;
 		sfx: string;
 	}
-> = ({ alt, cart, height, marginBottom, marginTop, sfx, src, type, width }) => {
+> = ({
+	alt,
+	autoPlay,
+	cart,
+	controls,
+	height,
+	loop,
+	marginBottom,
+	marginTop,
+	playsInline,
+	poster,
+	preload,
+	sfx,
+	src,
+	type,
+	width,
+}) => {
 	/*
 	 * Constants
 	 */
@@ -42,7 +58,19 @@ const P8SfxVideo: FC<
 				marginTop: marginTop === true ? "6rem" : marginTop,
 			}}
 		>
-			<Video alt={alt} height={height} src={src} type={type} width={width} />
+			<Video
+				alt={alt}
+				autoPlay={autoPlay}
+				controls={controls}
+				height={height}
+				loop={loop}
+				playsInline={playsInline}
+				poster={poster}
+				preload={preload}
+				src={src}
+				type={type}
+				width={width}
+			/>
 
 			<div className={styles.meta}>
 				{cart && (

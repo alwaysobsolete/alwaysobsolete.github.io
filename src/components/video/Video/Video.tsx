@@ -1,6 +1,7 @@
-import type { FC } from "react";
+import type { DetailedHTMLProps, FC, VideoHTMLAttributes } from "react";
 
-interface VideoProps {
+interface VideoProps
+	extends DetailedHTMLProps<VideoHTMLAttributes<HTMLElement>, HTMLElement> {
 	alt: string;
 	height?: string | number;
 	src: string;
@@ -8,12 +9,33 @@ interface VideoProps {
 	width?: string | number;
 }
 
-const Video: FC<VideoProps> = ({ alt, height, src, type, width }) => {
+const Video: FC<VideoProps> = ({
+	alt,
+	autoPlay,
+	controls = true,
+	height,
+	loop,
+	playsInline = true,
+	poster,
+	preload = "meta",
+	src,
+	type,
+	width,
+}) => {
 	/*
 	 * React element
 	 */
 	return (
-		<video controls height={height} width={width}>
+		<video
+			autoPlay={autoPlay}
+			controls={controls}
+			height={height}
+			loop={loop}
+			playsInline={playsInline}
+			poster={poster}
+			preload={preload}
+			width={width}
+		>
 			<source src={src} type={type} />
 			<a href={src}>{alt}</a>
 		</video>

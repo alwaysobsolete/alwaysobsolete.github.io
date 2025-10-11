@@ -7,13 +7,13 @@ const InfoLinksScript: FC = () => {
 	 */
 	return (
 		<div>
-			<Script
-				type="text/javascript"
-				src="//resources.infolinks.com/js/infolinks_main.js"
-			></Script>
 			<Script id="infolinks" type="text/javascript">
 				var infolinks_pid = 3440745; var infolinks_wsid = 0;
 			</Script>
+			<Script
+				type="text/javascript"
+				src="http://resources.infolinks.com/js/infolinks_main.js"
+			></Script>
 		</div>
 	);
 };

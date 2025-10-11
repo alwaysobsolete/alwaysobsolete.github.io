@@ -40,7 +40,13 @@ const ImageFigure: FC<ImageFigureProps> = ({
 		>
 			<LinkWrapper>
 				{/* eslint-disable-next-line @next/next/no-img-element */}
-				<img alt={alt} height={height} src={src} title={title} width={width} />
+				<img
+					alt={alt}
+					height={height}
+					src={src}
+					title={title || alt}
+					width={width}
+				/>
 			</LinkWrapper>
 		</Figure>
 	);

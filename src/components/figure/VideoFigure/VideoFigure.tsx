@@ -9,6 +9,8 @@ const VideoFigure: FC<FigureProps & VideoProps> = ({
 	alt,
 	caption,
 	height,
+	marginBottom,
+	marginTop,
 	src,
 	type,
 	width,
@@ -17,7 +19,7 @@ const VideoFigure: FC<FigureProps & VideoProps> = ({
 	 * React element
 	 */
 	return (
-		<Figure caption={caption}>
+		<Figure caption={caption} marginBottom={marginBottom} marginTop={marginTop}>
 			<Video alt={alt} height={height} src={src} type={type} width={width} />
 		</Figure>
 	);

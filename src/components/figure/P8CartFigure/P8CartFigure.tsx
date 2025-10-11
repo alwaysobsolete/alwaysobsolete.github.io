@@ -8,6 +8,8 @@ const P8CartFigure: FC<ImageFigureProps> = ({
 	caption,
 	height,
 	href,
+	marginBottom,
+	marginTop,
 	src,
 	title,
 	width,
@@ -18,6 +20,8 @@ const P8CartFigure: FC<ImageFigureProps> = ({
 			caption={caption || alt}
 			height={height}
 			href={href || src}
+			marginBottom={marginBottom}
+			marginTop={marginTop}
 			src={src}
 			title={title || "This image is a p8.png cart, run it in Pico-8!"}
 			width={width}

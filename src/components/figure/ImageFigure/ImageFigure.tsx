@@ -33,7 +33,11 @@ const ImageFigure: FC<ImageFigureProps> = ({
 	 * React element
 	 */
 	return (
-		<Figure caption={caption} marginBottom={marginBottom} marginTop={marginTop}>
+		<Figure
+			caption={caption || alt}
+			marginBottom={marginBottom}
+			marginTop={marginTop}
+		>
 			<LinkWrapper>
 				{/* eslint-disable-next-line @next/next/no-img-element */}
 				<img alt={alt} height={height} src={src} title={title} width={width} />

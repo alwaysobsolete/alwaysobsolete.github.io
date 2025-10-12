@@ -53,4 +53,12 @@ Build the static app:
 yarn build
 ```
 
-Deploy `./out` dir to static server
+The static app can be tested by running an http server and serving the `/out` directory.
+
+## Deploy
+
+Site is deployed to [GitHub Pages](https://docs.github.com/en/pages). See [/.github/workflows] and [/settings/pages](/settings/pages).
+
+## Contribute
+
+To contribute, create a pull request against the [dev branch](https://github.com/alwaysobsolete/alwaysobsolete.github.io/tree/dev).

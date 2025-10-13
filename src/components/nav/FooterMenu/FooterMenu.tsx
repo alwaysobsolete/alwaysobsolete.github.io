@@ -24,41 +24,45 @@ const FooterMenu: FC = () => {
 				<div className={styles.logo}>
 					<Link href="/">/always/obsolete</Link>
 				</div>
-
-				<ul className={styles.icons}>
-					<li>
-						<SocialIcon
-							style={socialIconStyle}
-							url="https://alwaysobsolete.itch.io"
-						/>
-					</li>
-
-					<li>
-						<SocialIcon
-							style={socialIconStyle}
-							url="https://github.com/alwaysobsolete"
-						/>
-					</li>
-				</ul>
 			</div>
 
-			<div className={styles.section}>
-				<ul>
-					<li>
-						<Link href="/books">Books</Link>
-					</li>
-				</ul>
-			</div>
+			<div className={styles.sections}>
+				<div className={styles.section}>
+					<ul className={styles.icons}>
+						<li>
+							<SocialIcon
+								style={socialIconStyle}
+								url="https://alwaysobsolete.itch.io"
+							/>
+						</li>
 
-			<div className={styles.section}>
-				<ul>
-					<li>
-						<Link href="/privacy">Privacy Policy</Link>
-					</li>
-					<li>
-						<Link href="/tos">Terms of Service</Link>
-					</li>
-				</ul>
+						<li>
+							<SocialIcon
+								style={socialIconStyle}
+								url="https://github.com/alwaysobsolete"
+							/>
+						</li>
+					</ul>
+				</div>
+
+				<div className={styles.section}>
+					<ul>
+						<li>
+							<Link href="/books">Books</Link>
+						</li>
+					</ul>
+				</div>
+
+				<div className={styles.section}>
+					<ul>
+						<li>
+							<Link href="/privacy">Privacy Policy</Link>
+						</li>
+						<li>
+							<Link href="/tos">Terms of Service</Link>
+						</li>
+					</ul>
+				</div>
 			</div>
 		</nav>
 	);

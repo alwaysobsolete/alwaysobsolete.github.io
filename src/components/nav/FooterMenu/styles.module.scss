@@ -1,8 +1,5 @@
 .wrapper {
 	color: var(--mantine-color-dimmed);
-	display: flex;
-	flex-wrap: wrap;
-	gap: var(--mantine-spacing-md);
 	margin-top: 4rem;
 	padding: 0 var(--mantine-spacing-md);
 
@@ -34,34 +31,41 @@
 
 		.logo {
 			font-weight: bolder;
-		}
-
-		ul.icons {
-			display: flex;
-			gap: var(--mantine-spacing-xs);
-			flex-wrap: wrap;
-			list-style-type: none;
-			margin-top: var(--mantine-spacing-sm);
-			padding-left: 0;
-
-			:global .social-svg {
-				filter: saturate(0);
-				opacity: 35%;
-
-				&:hover {
-					filter: none;
-					opacity: 100%;
-				}
-			}
+			margin-bottom: 1rem;
 		}
 	}
 
-	.section {
-		margin-top: 2.3rem;;
+	.sections {
+		display: flex;
+		flex-wrap: wrap;
+		font-size: 0.75rem;
+		gap: var(--mantine-spacing-md);
 
-		ul {
-			list-style-type: none;
-			padding-left: 0;
+		.section {
+			flex: 1;
+
+			ul {
+				list-style-type: none;
+				padding-left: 0;
+			}
+
+			ul.icons {
+				display: flex;
+				gap: var(--mantine-spacing-xs);
+				flex-wrap: wrap;
+				list-style-type: none;
+				padding-left: 0;
+
+				:global .social-svg {
+					filter: saturate(0);
+					opacity: 35%;
+
+					&:hover {
+						filter: none;
+						opacity: 100%;
+					}
+				}
+			}
 		}
 	}
 }

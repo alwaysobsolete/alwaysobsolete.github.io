@@ -23,6 +23,18 @@ function sitemap(): MetadataRoute.Sitemap {
 			priority: 0.5,
 			images: ["/content/books/parastoo-maleki-ORT8CtIFriE-unsplash.jpg"],
 		},
+		{
+			url: `${env.URL}/privacy`,
+			lastModified: new Date(),
+			changeFrequency: "yearly",
+			priority: 0,
+		},
+		{
+			url: `${env.URL}/tos`,
+			lastModified: new Date(),
+			changeFrequency: "yearly",
+			priority: 0,
+		},
 	];
 }
 

@@ -1,5 +1,5 @@
 import type Book from "@/models/Book";
-import books from "@/content/books";
+import books from "@/lib/data/Book/getBooks";
 
 /**
  * Get Book or Throw

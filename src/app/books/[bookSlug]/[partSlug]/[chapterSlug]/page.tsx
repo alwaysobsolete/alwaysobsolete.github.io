@@ -5,7 +5,7 @@ import type { FC } from "react";
 import ChapterTOC from "@/components/content/Book/Chapter/ChapterTOC/ChapterTOC";
 import Breadcrumbs from "@/components/nav/Breadcrumbs/Breadcrumbs";
 import Siblings from "@/components/nav/Siblings/Siblings";
-import books from "@/content/books";
+import books from "@/lib/data/Book/getBooks";
 import getBookOrThrow from "@/lib/data/Book/getBookOrThrow";
 
 import "github-markdown-css/github-markdown-dark.css";

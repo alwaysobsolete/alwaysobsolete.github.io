@@ -4,7 +4,7 @@ import type { FC } from "react";
 import Image from "next/image";
 
 import BookCard from "@/components/content/Book/BookCard/BookCard";
-import books from "@/content/books";
+import books from "@/lib/data/Book/getBooks";
 
 import "github-markdown-css/github-markdown-dark.css";
 import "@/styles/markdown.scss";

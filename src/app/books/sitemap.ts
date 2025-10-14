@@ -1,7 +1,7 @@
 import type { MetadataRoute } from "next";
 
 import env from "@/config/env";
-import books from "@/content/books";
+import books from "@/lib/data/Book/getBooks";
 
 /*
  * Generate sitemap

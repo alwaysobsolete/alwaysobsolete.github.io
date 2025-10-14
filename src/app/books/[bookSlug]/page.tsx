@@ -4,7 +4,7 @@ import type { FC } from "react";
 import Image from "next/image";
 
 import BookTOC from "@/components/content/Book/BookTOC/BookTOC";
-import books from "@/content/books";
+import books from "@/lib/data/Book/getBooks";
 import getBookOrThrow from "@/lib/data/Book/getBookOrThrow";
 
 import "github-markdown-css/github-markdown-dark.css";

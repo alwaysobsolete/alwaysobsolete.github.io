@@ -17,6 +17,12 @@ function sitemap(): MetadataRoute.Sitemap {
 			images: ["/tina-rataj-berard-0Q33pyk-AXI-unsplash.jpg"],
 		},
 		{
+			url: `${env.URL}/about`,
+			lastModified: new Date(),
+			changeFrequency: "yearly",
+			priority: 0,
+		},
+		{
 			url: `${env.URL}/books`,
 			lastModified: new Date(),
 			changeFrequency: "monthly",

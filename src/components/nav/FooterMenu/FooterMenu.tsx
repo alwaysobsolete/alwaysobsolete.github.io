@@ -56,6 +56,9 @@ const FooterMenu: FC = () => {
 				<div className={styles.section}>
 					<ul>
 						<li>
+							<Link href="/about">About Us</Link>
+						</li>
+						<li>
 							<Link href="/privacy">Privacy Policy</Link>
 						</li>
 						<li>

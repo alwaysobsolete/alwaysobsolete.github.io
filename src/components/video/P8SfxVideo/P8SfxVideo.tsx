@@ -10,7 +10,6 @@ import type { VideoProps } from "@/components/video/Video/Video";
 import PreWithCodeCopy from "@/components/pre/PreWithCodeCopy/PreWithCodeCopy";
 import Video from "@/components/video/Video/Video";
 
-import CartImg from "./cart32.png";
 import styles from "./styles.module.scss";
 
 const P8SfxVideo: FC<
@@ -78,7 +77,7 @@ const P8SfxVideo: FC<
 						<a className={styles.cart} href={cart}>
 							<Image
 								alt="Pico-8 Cart Icon"
-								src={CartImg}
+								src="/common/cart32.png"
 								height={16}
 								width={13}
 							/>

@@ -34,9 +34,14 @@
 		margin-top: 6rem;
 	}
 
-	pre > code {
-		white-space: pre-wrap;
-		word-break: break-all;
+	pre {
+		background: #002b36;
+
+		code {
+			background: inherit;
+			white-space: pre-wrap;
+			word-break: break-all;
+		}
 	}
 
 	.anchor-heading {

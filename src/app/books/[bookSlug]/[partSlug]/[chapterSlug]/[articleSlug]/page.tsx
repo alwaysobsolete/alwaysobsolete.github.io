@@ -8,6 +8,7 @@ import books from "@/lib/data/Book/getBooks";
 import getBookOrThrow from "@/lib/data/Book/getBookOrThrow";
 
 import "github-markdown-css/github-markdown-dark.css";
+import "highlight.js/scss/base16/solarized-dark.scss";
 import "@/styles/markdown.scss";
 import styles from "./styles.module.scss";
 

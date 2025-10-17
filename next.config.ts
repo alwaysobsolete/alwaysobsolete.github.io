@@ -3,6 +3,7 @@ import createMDX from "@next/mdx";
 import path from "path";
 import remarkGfm from "remark-gfm";
 import rehypeAutolinkHeadings from "rehype-autolink-headings";
+import rehypeHighlight from "rehype-highlight";
 import rehypeSlug from "rehype-slug";
 
 const nextConfig: NextConfig = {
@@ -83,6 +84,14 @@ const withMDX = createMDX({
 					behavior: "wrap",
 					properties: {
 						className: "anchor-heading",
+					},
+				},
+			],
+			[
+				rehypeHighlight,
+				{
+					aliases: {
+						markdown: "mdx",
 					},
 				},
 			],

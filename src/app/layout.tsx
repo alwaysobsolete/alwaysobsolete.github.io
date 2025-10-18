@@ -8,10 +8,10 @@ import {
 
 import FooterMenu from "@/components/nav/FooterMenu/FooterMenu";
 import MainMenu from "@/components/nav/MainMenu/MainMenu";
+import env from "@/config/env";
 
 import "@mantine/core/styles.css";
 import "@/styles/globals.scss";
-import env from "@/config/env";
 
 const description =
 	"A blog about vintage, retro, and fantasy video game consoles";

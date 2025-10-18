@@ -1,11 +1,9 @@
-const { NEXT_PUBLIC_DOMAIN, NEXT_PUBLIC_HTTP_PROTOCOL, NEXT_PUBLIC_PORT } =
-	process.env;
-
 const env = {
-	NEXT_PUBLIC_DOMAIN,
-	NEXT_PUBLIC_HTTP_PROTOCOL,
-	NEXT_PUBLIC_PORT,
-	URL: `${NEXT_PUBLIC_HTTP_PROTOCOL}://${NEXT_PUBLIC_DOMAIN}${Number(NEXT_PUBLIC_PORT) === 80 || Number(NEXT_PUBLIC_PORT) === 443 ? "" : `:${NEXT_PUBLIC_PORT}`}`,
+	NEXT_PUBLIC_DOMAIN: process.env.NEXT_PUBLIC_DOMAIN as string,
+	NEXT_PUBLIC_GA_TAG_ID: process.env.NEXT_PUBLIC_GA_TAG_ID as string,
+	NEXT_PUBLIC_HTTP_PROTOCOL: process.env.NEXT_PUBLIC_HTTP_PROTOCOL as string,
+	NEXT_PUBLIC_PORT: process.env.NEXT_PUBLIC_PORT as string,
+	URL: `${process.env.NEXT_PUBLIC_HTTP_PROTOCOL}://${process.env.NEXT_PUBLIC_DOMAIN}${Number(process.env.NEXT_PUBLIC_PORT) === 80 || Number(process.env.NEXT_PUBLIC_PORT) === 443 ? "" : `:${process.env.NEXT_PUBLIC_PORT}`}`,
 };
 
 /*

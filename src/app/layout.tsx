@@ -5,13 +5,14 @@ import {
 	MantineProvider,
 	mantineHtmlProps,
 } from "@mantine/core";
+import { GoogleAnalytics } from "@next/third-parties/google";
 
 import FooterMenu from "@/components/nav/FooterMenu/FooterMenu";
 import MainMenu from "@/components/nav/MainMenu/MainMenu";
+import env from "@/config/env";
 
 import "@mantine/core/styles.css";
 import "@/styles/globals.scss";
-import env from "@/config/env";
 
 const description =
 	"A blog about vintage, retro, and fantasy video game consoles";
@@ -41,6 +42,7 @@ const RootLayout: FC<PropsWithChildren> = ({ children }) => {
 		<html lang="en" {...mantineHtmlProps}>
 			<head>
 				<ColorSchemeScript defaultColorScheme="auto" />
+				<GoogleAnalytics gaId={env.NEXT_PUBLIC_GA_TAG_ID} />
 			</head>
 
 			<body>

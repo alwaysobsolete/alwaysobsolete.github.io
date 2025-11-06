@@ -1,21 +1,19 @@
+import nextCoreWebVitals from "eslint-config-next/core-web-vitals";
+import nextTypescript from "eslint-config-next/typescript";
 import { includeIgnoreFile } from "@eslint/compat";
-import { defineConfig, globalIgnores } from "eslint/config";
-import { FlatCompat } from "@eslint/eslintrc";
+import { globalIgnores } from "eslint/config";
 import eslintPluginPrettierRecommended from "eslint-plugin-prettier/recommended";
+import path from "node:path";
 import { fileURLToPath } from "node:url";
 
 // Use .gitignore
-const gitignorePath = fileURLToPath(new URL(".gitignore", import.meta.url));
+const __filename = fileURLToPath(import.meta.url);
+const __dirname = path.dirname(__filename);
+const gitignorePath = path.resolve(__dirname, ".gitignore");
 
-// Legacy compatibility
-const compat = new FlatCompat({
-	baseDirectory: import.meta.dirname,
-});
-
-const eslintConfig = defineConfig([
-	...compat.config({
-		extends: ["next/core-web-vitals", "next/typescript"],
-	}),
+const eslintConfig = [
+	...nextCoreWebVitals,
+	...nextTypescript,
 	includeIgnoreFile(gitignorePath),
 	globalIgnores(["public/**/*"]),
 	eslintPluginPrettierRecommended,
@@ -24,6 +22,15 @@ const eslintConfig = defineConfig([
 			semi: "error",
 		},
 	},
-]);
+	{
+		ignores: [
+			"node_modules/**",
+			".next/**",
+			"out/**",
+			"build/**",
+			"next-env.d.ts",
+		],
+	},
+];
 
 export default eslintConfig;

@@ -1,4 +1,4 @@
-import type { FC, PropsWithChildren } from "react";
+import type { FC } from "react";
 
 import type { FigureProps } from "@/components/figure/Figure/Figure";
 import Figure from "@/components/figure/Figure/Figure";
@@ -23,12 +23,6 @@ const ImageFigure: FC<ImageFigureProps> = ({
 	title,
 	width,
 }) => {
-	/**
-	 * Link Wrapper component
-	 */
-	const LinkWrapper: FC<PropsWithChildren> = ({ children }) =>
-		href ? <a href={href}>{children}</a> : <>{children}</>;
-
 	/*
 	 * React element
 	 */
@@ -38,8 +32,19 @@ const ImageFigure: FC<ImageFigureProps> = ({
 			marginBottom={marginBottom}
 			marginTop={marginTop}
 		>
-			<LinkWrapper>
-				{/* eslint-disable-next-line @next/next/no-img-element */}
+			{href ? (
+				<a href={href}>
+					{/* eslint-disable-next-line @next/next/no-img-element */}
+					<img
+						alt={alt}
+						height={height}
+						src={src}
+						title={title || alt}
+						width={width}
+					/>
+				</a>
+			) : (
+				// eslint-disable-next-line @next/next/no-img-element
 				<img
 					alt={alt}
 					height={height}
@@ -47,7 +52,7 @@ const ImageFigure: FC<ImageFigureProps> = ({
 					title={title || alt}
 					width={width}
 				/>
-			</LinkWrapper>
+			)}
 		</Figure>
 	);
 };

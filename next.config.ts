@@ -25,9 +25,15 @@ const nextConfig: NextConfig = {
 
 	trailingSlash: true,
 
-	/*
-	 * webpack
-	 */
+	turbopack: {
+		rules: {
+			"*.svg": {
+				loaders: ["@svgr/webpack"],
+				as: "*.js",
+			},
+		},
+	},
+
 	webpack(config) {
 		/*
 		 * SVGR

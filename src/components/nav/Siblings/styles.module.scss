@@ -7,7 +7,7 @@
 	justify-content: center;
 	width: 100%;
 
-	:global .m_77c9d27d:where(:disabled:not([data-loading]), [data-disabled]:not([data-loading])) {
+	:global(.m_77c9d27d:where(:disabled:not([data-loading]), [data-disabled]:not([data-loading]))) {
 		background: none;
 		border: calc(0.0625rem * var(--mantine-scale)) solid var(--mantine-color-dimmed);
 	}
@@ -16,7 +16,7 @@
 		height: inherit;
 		min-height: var(--button-height);
 
-		:global .mantine-Button-label {
+		:global(.mantine-Button-label) {
 			padding: 0.5rem 0;
 			white-space: inherit;
 		}

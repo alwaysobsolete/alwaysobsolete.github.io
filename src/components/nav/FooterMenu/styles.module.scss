@@ -73,7 +73,7 @@
 				list-style-type: none;
 				padding-left: 0;
 
-				:global .social-svg {
+				:global(.social-svg) {
 					filter: saturate(0);
 					opacity: 35%;
 

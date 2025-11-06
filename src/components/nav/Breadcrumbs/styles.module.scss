@@ -24,11 +24,11 @@
 		}
 	}
 
-	:global .mantine-Breadcrumbs-separator:first-child {
+	:global(.mantine-Breadcrumbs-separator:first-child) {
 		margin-left: 0;
 	}
 
-	:global .mantine-Breadcrumbs-separator:last-child {
+	:global(.mantine-Breadcrumbs-separator:last-child) {
 		margin-right: 0;
 	}
 }

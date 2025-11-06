@@ -29,13 +29,13 @@
 }
 
 .drawerWrapper {
-	:global .mantine-NavLink-section {
+	:global(.mantine-NavLink-section) {
 		svg {
 			fill: currentColor;
 		}
 	}
 
-	:global .mantine-NavLink-label {
+	:global(.mantine-NavLink-label) {
 		font-family: monospace;
 		font-weight: bolder;
 	}

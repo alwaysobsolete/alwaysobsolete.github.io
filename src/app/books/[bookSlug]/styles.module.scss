@@ -7,7 +7,7 @@
 		@include hero.default;
 	}
 
-	:global .markdown-body {
+	:global(.markdown-body) {
 		background: none;
 	}
 }

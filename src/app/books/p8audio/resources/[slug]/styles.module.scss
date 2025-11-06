@@ -1,7 +1,7 @@
 .wrapper {
 	padding: 0 var(--mantine-spacing-md);
 
-	:global .markdown-body {
+	:global(.markdown-body) {
 		background: none;
 	}
 }

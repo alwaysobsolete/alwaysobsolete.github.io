@@ -13,4 +13,29 @@
 		text-align: center;
 		width: 100%;
 	}
+
+	ul.bookList {
+		display: flex;
+		flex-wrap: wrap;
+		gap: var(--mantine-spacing-md);
+		margin-top: var(--mantine-spacing-md);
+		padding: 0;
+		list-style-type: none;
+
+		li {
+			width: 100%;
+
+			@media (min-width: mantine.$mantine-breakpoint-sm) {
+				width: calc(50% - (calc(var(--mantine-spacing-md) / 2)));
+			}
+
+			@media (min-width: mantine.$mantine-breakpoint-lg) {
+				width: calc(calc(100% / 3) - (calc(var(--mantine-spacing-md) / 3)));
+			}
+
+			@media (min-width: mantine.$mantine-breakpoint-xl) {
+				width: calc(25% - (calc(var(--mantine-spacing-md) / 4)));
+			}
+		}
+	}
 }

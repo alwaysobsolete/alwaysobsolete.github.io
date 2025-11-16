@@ -1,6 +1,9 @@
 import type { FC } from "react";
 import Image from "next/image";
 
+import BookCard from "@/components/content/Book/BookCard/BookCard";
+import books from "@/lib/data/Book/getBooks";
+
 import "github-markdown-css/github-markdown-dark.css";
 import "@/styles/markdown.scss";
 import styles from "./styles.module.scss";
@@ -27,6 +30,18 @@ const HomePage: FC = async () => {
 			<p className={styles.description}>
 				A blog about vintage, retro, and fantasy video game consoles.
 			</p>
+
+			<h2>Featured Books:</h2>
+
+			<ul className={styles.bookList}>
+				{books
+					.filter((_book, i) => i < 2)
+					.map((book) => (
+						<li key={book.slug}>
+							<BookCard book={JSON.parse(JSON.stringify(book))} />
+						</li>
+					))}
+			</ul>
 
 			<article className="markdown-body">
 				<Markdown />

@@ -6,6 +6,7 @@ import {
 	mantineHtmlProps,
 } from "@mantine/core";
 
+import CookieConsent from "@/components/document/CookieConsent/CookieConsent";
 import GoogleAnalytics from "@/components/google/GoogleAnalytics";
 import FooterMenu from "@/components/nav/FooterMenu/FooterMenu";
 import MainMenu from "@/components/nav/MainMenu/MainMenu";
@@ -62,6 +63,7 @@ const RootLayout: FC<PropsWithChildren> = ({ children }) => {
 								<div className="copyright">
 									Copyright © /always/obsolete 2025
 								</div>
+								<CookieConsent />
 							</footer>
 						</MantineProvider>
 					</body>

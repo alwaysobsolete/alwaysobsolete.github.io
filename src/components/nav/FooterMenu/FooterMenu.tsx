@@ -62,6 +62,9 @@ const FooterMenu: FC = () => {
 							<Link href="/privacy">Privacy Policy</Link>
 						</li>
 						<li>
+							<Link href="/cookie">Cookie Policy</Link>
+						</li>
+						<li>
 							<Link href="/tos">Terms of Service</Link>
 						</li>
 					</ul>

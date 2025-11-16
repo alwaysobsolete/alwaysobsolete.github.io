@@ -9,6 +9,7 @@ import {
 import GoogleAnalytics from "@/components/google/GoogleAnalytics";
 import FooterMenu from "@/components/nav/FooterMenu/FooterMenu";
 import MainMenu from "@/components/nav/MainMenu/MainMenu";
+import { CookieConsentProvider } from "@/contexts/CookieConsent";
 import { GPCProvider } from "@/contexts/GPC";
 import env from "@/config/env";
 
@@ -48,20 +49,22 @@ const RootLayout: FC<PropsWithChildren> = ({ children }) => {
 				</head>
 
 				<body>
-					<MantineProvider defaultColorScheme="auto">
-						<header>
-							<MainMenu />
-						</header>
+					<CookieConsentProvider>
+						<MantineProvider defaultColorScheme="auto">
+							<header>
+								<MainMenu />
+							</header>
 
-						<main>{children}</main>
+							<main>{children}</main>
 
-						<footer>
-							<FooterMenu />
-							<div className="copyright">
-								Copyright © /always/obsolete 2025
-							</div>
-						</footer>
-					</MantineProvider>
+							<footer>
+								<FooterMenu />
+								<div className="copyright">
+									Copyright © /always/obsolete 2025
+								</div>
+							</footer>
+						</MantineProvider>
+					</CookieConsentProvider>
 				</body>
 			</GPCProvider>
 		</html>

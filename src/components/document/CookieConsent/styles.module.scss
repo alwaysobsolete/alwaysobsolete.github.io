@@ -1,0 +1,12 @@
+.wrapper {
+	text-align: center;
+
+	:global(.mantine-Drawer-content) {
+		// overflow-y: hidden;
+
+		:global(.flex) {
+			justify-content: center;
+			margin-top: 1rem;
+		}
+	}
+}

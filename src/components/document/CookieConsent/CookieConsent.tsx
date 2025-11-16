@@ -5,8 +5,7 @@ import { Button, Drawer } from "@mantine/core";
 import Link from "next/link";
 import { useState } from "react";
 
-import { useCookieConsentContext } from "@/contexts/CookieConsent/CookieConsent";
-import { cookieConsentName } from "@/hooks/useCookieConsent";
+import useCookieConsent, { cookieConsentName } from "@/hooks/useCookieConsent";
 import expireAllCookies from "@/lib/document/expireAllCookies";
 import setCookie from "@/lib/document/setCookie";
 
@@ -16,7 +15,7 @@ const CookieConsent: FC = () => {
 	/*
 	 * Context
 	 */
-	const { consent } = useCookieConsentContext();
+	const consent = useCookieConsent();
 
 	/*
 	 * State

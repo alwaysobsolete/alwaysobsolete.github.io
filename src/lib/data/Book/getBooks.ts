@@ -2,7 +2,7 @@ import getSubdirs from "@/lib/fs/getSubdirs";
 import Book from "@/models/Book";
 
 async function makeBooks() {
-	const bookPaths = await getSubdirs("./src/content/books");
+	const bookPaths = await getSubdirs("./content/books");
 
 	const results = await Promise.all(
 		bookPaths.map((bookPath) => Book.init(bookPath)),

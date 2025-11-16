@@ -1,3 +1,6 @@
+content/* filter=lfs diff=lfs merge=lfs -text
+content/**/* filter=lfs diff=lfs merge=lfs -text
+content/*.ts !text -filter -merge -diff
 public/* filter=lfs diff=lfs merge=lfs -text
 public/**/* filter=lfs diff=lfs merge=lfs -text
 src/content/* filter=lfs diff=lfs merge=lfs -text

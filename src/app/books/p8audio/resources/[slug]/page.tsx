@@ -51,9 +51,7 @@ export async function generateMetadata({
 export async function generateStaticParams(): Promise<
 	ParamMap["/books/p8audio/resources/[slug]"][]
 > {
-	const files = await fsPromises.readdir(
-		"./src/content/books/p8audio/resources",
-	);
+	const files = await fsPromises.readdir("./content/books/p8audio/resources");
 
 	const staticParams = files
 		.filter((file) => path.extname(file) === ".mdx")

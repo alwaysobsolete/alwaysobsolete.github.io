@@ -5,8 +5,8 @@ import {
 	MantineProvider,
 	mantineHtmlProps,
 } from "@mantine/core";
-import { GoogleAnalytics } from "@next/third-parties/google";
 
+import GoogleAnalytics from "@/components/google/GoogleAnalytics";
 import FooterMenu from "@/components/nav/FooterMenu/FooterMenu";
 import MainMenu from "@/components/nav/MainMenu/MainMenu";
 import { GPCProvider } from "@/contexts/GPC";

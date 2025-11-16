@@ -10,7 +10,6 @@ function expireCookie(
 	const expires = "Thu, 01 Jan 1970 00:00:00 UTC";
 
 	document.cookie = `${name}=; domain=${domain}; expires=${expires}; path=${path};`;
-	document.cookie = `${name}=; domain=.${domain}; expires=${expires}; path=${path};`;
 }
 
 export default expireCookie;

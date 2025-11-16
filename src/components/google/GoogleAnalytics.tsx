@@ -4,7 +4,6 @@ import type { GAParams } from "node_modules/@next/third-parties/dist/types/googl
 import type { FC } from "react";
 import { GoogleAnalytics as NextGoogleAnalytics } from "@next/third-parties/google";
 
-import { useGPCContext } from "@/contexts/GPC";
 import useCookieConsent from "@/hooks/useCookieConsent";
 
 const GoogleAnalytics: FC<GAParams> = ({
@@ -17,12 +16,11 @@ const GoogleAnalytics: FC<GAParams> = ({
 	 * Context
 	 */
 	const consent = useCookieConsent();
-	const { enabled: gpcEnabled } = useGPCContext();
 
 	/*
 	 * React element
 	 */
-	if (!consent || gpcEnabled) {
+	if (!consent || !!navigator.globalPrivacyControl) {
 		return;
 	} else {
 		return (

@@ -9,7 +9,6 @@ import {
 import GoogleAnalytics from "@/components/google/GoogleAnalytics";
 import FooterMenu from "@/components/nav/FooterMenu/FooterMenu";
 import MainMenu from "@/components/nav/MainMenu/MainMenu";
-import { GPCProvider } from "@/contexts/GPC";
 import env from "@/config/env";
 
 import "@mantine/core/styles.css";
@@ -41,29 +40,25 @@ const metadata: Metadata = {
 const RootLayout: FC<PropsWithChildren> = ({ children }) => {
 	return (
 		<html lang="en" {...mantineHtmlProps}>
-			<GPCProvider enabled={!!navigator.globalPrivacyControl}>
-				<head>
-					<ColorSchemeScript defaultColorScheme="auto" />
-					<GoogleAnalytics gaId={env.NEXT_PUBLIC_GA_TAG_ID} />
-				</head>
+			<head>
+				<ColorSchemeScript defaultColorScheme="auto" />
+				<GoogleAnalytics gaId={env.NEXT_PUBLIC_GA_TAG_ID} />
+			</head>
 
-				<body>
-					<MantineProvider defaultColorScheme="auto">
-						<header>
-							<MainMenu />
-						</header>
+			<body>
+				<MantineProvider defaultColorScheme="auto">
+					<header>
+						<MainMenu />
+					</header>
 
-						<main>{children}</main>
+					<main>{children}</main>
 
-						<footer>
-							<FooterMenu />
-							<div className="copyright">
-								Copyright © /always/obsolete 2025
-							</div>
-						</footer>
-					</MantineProvider>
-				</body>
-			</GPCProvider>
+					<footer>
+						<FooterMenu />
+						<div className="copyright">Copyright © /always/obsolete 2025</div>
+					</footer>
+				</MantineProvider>
+			</body>
 		</html>
 	);
 };

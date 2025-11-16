@@ -3,7 +3,7 @@
 import type { FC, PropsWithChildren } from "react";
 import { createContext, useContext } from "react";
 
-import useCookieConsent from "./hooks/useCookieConsent";
+import useCookieConsent from "@/hooks/useCookieConsent";
 
 interface ICookieConsentContext {
 	consent: boolean;

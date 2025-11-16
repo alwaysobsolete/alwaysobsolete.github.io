@@ -6,7 +6,7 @@ import Link from "next/link";
 import { useState } from "react";
 
 import { useCookieConsentContext } from "@/contexts/CookieConsent/CookieConsent";
-import { cookieConsentName } from "@/contexts/CookieConsent/hooks/useCookieConsent";
+import { cookieConsentName } from "@/hooks/useCookieConsent";
 import expireAllCookies from "@/lib/document/expireAllCookies";
 import setCookie from "@/lib/document/setCookie";
 

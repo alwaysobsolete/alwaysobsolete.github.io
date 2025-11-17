@@ -61,7 +61,12 @@ const CookieConsent: FC = () => {
 			</p>
 
 			<div className="flex">
-				<Button color="teal" onClick={onAccept} size="compact-sm">
+				<Button
+					color="teal"
+					data-autofocus
+					onClick={onAccept}
+					size="compact-sm"
+				>
 					Accept
 				</Button>
 

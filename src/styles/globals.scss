@@ -77,7 +77,7 @@ video {
 }
 
 .flex {
-	display: flex;
-	flex-wrap: wrap;
+	@include mixins.flex;
+
 	gap: var(--mantine-spacing-md);
 }

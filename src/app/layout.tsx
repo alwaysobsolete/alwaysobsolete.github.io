@@ -41,12 +41,30 @@ const RootLayout: FC<PropsWithChildren> = ({ children }) => {
 	return (
 		<html lang="en" {...mantineHtmlProps}>
 			<head>
-				<ColorSchemeScript defaultColorScheme="auto" />
+				<ColorSchemeScript forceColorScheme="dark" />
 				<GoogleAnalytics gaId={env.NEXT_PUBLIC_GA_TAG_ID} />
 			</head>
 
 			<body>
-				<MantineProvider defaultColorScheme="auto">
+				<MantineProvider
+					forceColorScheme="dark"
+					theme={{
+						colors: {
+							dark: [
+								"#6ac6ab",
+								"#5bac97",
+								"#099268",
+								"#087f5b",
+								"#06644c",
+								"#054a3d",
+								"#032f2e",
+								"#01141e",
+								"#01111b",
+								"#000e17",
+							],
+						},
+					}}
+				>
 					<header>
 						<MainMenu />
 					</header>

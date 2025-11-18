@@ -10,18 +10,18 @@ interface CookieOptions {
 	secure?: boolean;
 }
 
-function setCookie(
-	name: string,
-	value: string,
-	options: CookieOptions = {
+function setCookie(name: string, value: string, optionsInit?: CookieOptions) {
+	const options: CookieOptions = {
 		domain: env.NEXT_PUBLIC_DOMAIN,
 		path: "/",
-	},
-) {
-	let str = `${name}=${value};`;
+		samesite: "strict",
+		...optionsInit,
+	};
+
+	let str = `${name}=${value}`;
 
 	Object.entries(options).forEach(
-		([k, v]) => (str = str.concat(` ${k}=${v};`)),
+		([k, v]) => (str = str.concat(`; ${k}=${v}`)),
 	);
 
 	document.cookie = str;

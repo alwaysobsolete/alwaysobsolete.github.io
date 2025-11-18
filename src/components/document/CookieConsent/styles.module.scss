@@ -1,8 +1,8 @@
 .wrapper {
-	text-align: center;
-
 	:global(.mantine-Drawer-content) {
+		background: var(--mantine-color-dark-9);
 		// overflow-y: hidden;
+		text-align: center;
 
 		:global(.flex) {
 			justify-content: center;
